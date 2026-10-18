@@ -9,7 +9,6 @@
       --ocean-blue: #0284C7;
       --ocean-deep: #0369A1;
       --ocean-soft: #E0F2FE;
-      --ocean-surface: #F0F9FF;
       --sun-yellow: #FBBF24;
       --sun-gold: #D97706;
       --sun-soft: #FEF3C7;
@@ -68,7 +67,7 @@
       gap: 10px;
     }
 
-    .love-badge {
+    .badge-status {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -323,7 +322,25 @@
       font-size: 0.9rem;
       font-weight: 700;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
+    }
+
+    .btn-refresh {
+      background: var(--bg-cream);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ocean-deep);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-refresh:hover {
+      background: var(--ocean-soft);
     }
 
     /* CARTOES DE ATIVIDADES */
@@ -511,7 +528,7 @@
   <header class="hero-canarias">
     <div class="hero-inner">
       <div class="hero-topline">
-        <div class="love-badge">Curadoria do Rodrigo para a Ema &hearts;</div>
+        <div class="badge-status">Canárias Spotter • Guia Oficial</div>
         <div class="weather-live-chip" id="weather-chip">☀️ A carregar tempo nas ilhas...</div>
       </div>
 
@@ -604,7 +621,10 @@
     <!-- ESTADO DOS RESULTADOS -->
     <div class="status-banner">
       <span id="results-counter">A carregar atividades...</span>
-      <span id="sync-status">Sincronizando...</span>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span id="sync-status">Sincronizando...</span>
+        <button class="btn-refresh" onclick="loadDataFromSheets()">🔄 Atualizar</button>
+      </div>
     </div>
 
     <!-- GRELHA -->
@@ -612,12 +632,12 @@
   </main>
 
   <footer>
-    <p>Criado e automatizado com carinho por Rodrigo Ribeiro para a Ema &hearts;</p>
+    <p>Canárias Spotter • Guia Independente das Ilhas Canárias</p>
     <p style="margin-top: 4px; opacity: 0.75;">Atualização diária automática às 07:30</p>
   </footer>
 
   <script>
-    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1lS_6wcQ7sZGBVnQ_4zzrlvUIvEK0gJBtGxGJcB-5GS0/export?format=csv";
+    const SHEET_ID = "1lS_6wcQ7sZGBVnQ_4zzrlvUIvEK0gJBtGxGJcB-5GS0";
 
     let EVENTS_DATA = [];
     let WEATHER_FORECAST = {};
@@ -643,13 +663,9 @@
         if (cc === '"' && quote && nc === '"') { arr[row][col] += cc; ++c; continue; }
         if (cc === '"') { quote = !quote; continue; }
         if (cc === ',' && !quote) { ++col; continue; }
-        if (cc === '
-' && nc === '
-' && !quote) { ++row; col = 0; ++c; continue; }
-        if (cc === '
-' && !quote) { ++row; col = 0; continue; }
-        if (cc === '
-' && !quote) { ++row; col = 0; continue; }
+        if (cc === '\r' && nc === '\n' && !quote) { ++row; col = 0; ++c; continue; }
+        if (cc === '\n' && !quote) { ++row; col = 0; continue; }
+        if (cc === '\r' && !quote) { ++row; col = 0; continue; }
         arr[row][col] += cc;
       }
       return arr;
@@ -657,7 +673,7 @@
 
     function mapSheetData(csvMatrix) {
       if (csvMatrix.length < 2) return [];
-      const headers = csvMatrix[0].map(h => h.trim().toLowerCase());
+      const headers = csvMatrix[0].map(h => (h || '').trim().toLowerCase().replace(/^["']|["']$/g, ''));
       const data = [];
 
       for (let i = 1; i < csvMatrix.length; i++) {
@@ -667,17 +683,22 @@
         const getCol = (possibleKeys) => {
           for (let key of possibleKeys) {
             const idx = headers.indexOf(key.toLowerCase());
-            if (idx !== -1 && row[idx]) return row[idx].trim();
+            if (idx !== -1 && row[idx]) {
+              return row[idx].trim().replace(/^["']|["']$/g, '');
+            }
           }
           return "";
         };
         
+        const title = getCol(["Título", "Titulo", "Title", "Nome"]);
+        if (!title) continue;
+
         data.push({
           id: getCol(["ID"]),
-          title: getCol(["Título", "Titulo", "Title", "Nome"]),
+          title: title,
           description: getCol(["Descrição", "Descricao", "Description"]),
           venue: getCol(["Local", "Lugar", "Venue"]),
-          zone: getCol(["Isla", "Zona", "Zone"]),
+          zone: getCol(["Isla", "Ilha", "Zona", "Zone"]),
           municipality: getCol(["Município", "Municipio"]),
           start_date: getCol(["Data Início", "Data Inicio", "Fecha Inicio", "Start Date"]),
           end_date: getCol(["Data Fim", "Fecha Fin", "End Date"]),
@@ -692,7 +713,6 @@
       return data;
     }
 
-    /* FUNCAO BLINDADA PARA ABERTURA DE LINKS EM TELEMOVEIS / WHATSAPP / DESKTOP */
     function openExternalUrl(rawUrl) {
       if (!rawUrl) return;
       let target = rawUrl.trim();
@@ -733,18 +753,49 @@
       generateDayStrip();
     }
 
+    /* SISTEMA DE SINCRONIZAÇÃO RESILIENTE MULTI-ENDPOINT (SEM BLOQUEIOS CORS NEM CACHE) */
+    async function fetchCSVWithFallbacks() {
+      const endpoints = [
+        // 1. Google Visualization API (Endpoint oficial da Google com CORS habilitado)
+        `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&t=${Date.now()}`,
+        // 2. Export direto sem cache
+        `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&t=${Date.now()}`,
+        // 3. Proxy CORS de redundância caso a rede local/móvel bloqueie
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&t=${Date.now()}`)}`
+      ];
+
+      for (let url of endpoints) {
+        try {
+          const res = await fetch(url, { cache: "no-store" });
+          if (res.ok) {
+            const text = await res.text();
+            if (text && text.length > 25 && !text.includes('<!DOCTYPE html>')) {
+              return text;
+            }
+          }
+        } catch (err) {
+          console.warn("Falha no endpoint:", url, err);
+        }
+      }
+      throw new Error("Não foi possível aceder à Google Sheet através de nenhum endpoint.");
+    }
+
     async function loadDataFromSheets() {
+      const statusEl = document.getElementById("sync-status");
+      const counterEl = document.getElementById("results-counter");
+      statusEl.textContent = "A sincronizar...";
+
       try {
-        const response = await fetch(SHEET_CSV_URL);
-        const csvText = await response.text();
+        const csvText = await fetchCSVWithFallbacks();
         const csvMatrix = parseCSV(csvText);
         EVENTS_DATA = mapSheetData(csvMatrix);
-        document.getElementById("sync-status").textContent = "Base de dados ligada";
+        statusEl.textContent = "Sincronizado ✅";
         generateDayStrip();
         renderEvents();
       } catch (error) {
-        document.getElementById("results-counter").textContent = "Erro ao ligar ao Google Sheets.";
-        document.getElementById("sync-status").textContent = "Sem ligação";
+        console.error("Erro na sincronização:", error);
+        counterEl.textContent = "Erro ao ligar ao Google Sheets.";
+        statusEl.textContent = "Sem ligação ⚠️";
       }
     }
 
@@ -852,7 +903,7 @@
       grid.innerHTML = filtered.map(ev => {
         const dateLabel = ev.start_date === ev.end_date ? ev.start_date : `${ev.start_date} a ${ev.end_date}`;
         const isFreePrice = isFree(ev.price);
-        const cleanUrl = (ev.url || "").replace(/'/g, "\'");
+        const cleanUrl = (ev.url || "").replace(/'/g, "\\'");
 
         const audienceBadges = ev.audience.map(a => {
           let c = "erasmus";
