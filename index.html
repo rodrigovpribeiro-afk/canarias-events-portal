@@ -2,164 +2,177 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agenda Canarias: Gran Canaria, Tenerife & Más</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Agenda Canarias: Gran Canaria &amp; Tenerife</title>
   <style>
     :root {
-      --bg-cream: #FAFAFA;
-      --bg-card: #FFFFFF;
-      --ocean-blue: #0284C7;
-      --ocean-soft: #E0F2FE;
-      --sun-yellow: #F59E0B;
-      --sun-soft: #FEF3C7;
-      --volcano-ash: #3F3F46;
-      --palm-green: #15803D;
-      --palm-soft: #DCFCE7;
-      --free-green: #10B981;
-      --ink-dark: #18181B;
-      --ink-muted: #52525B;
-      --border-soft: #E4E4E7;
-      --shadow-soft: 0 10px 25px -5px rgba(24, 24, 27, 0.06), 0 8px 10px -6px rgba(24, 24, 27, 0.04);
+      --sand-bg: #F8F6F0;
+      --card-bg: #FFFFFF;
+      --basalt-dark: #18181B;
+      --basalt-card: #27272A;
+      --atlantic-blue: #0284C7;
+      --atlantic-soft: #E0F2FE;
+      --dune-gold: #D97706;
+      --dune-soft: #FEF3C7;
+      --palm-emerald: #059669;
+      --palm-soft: #D1FAE5;
+      --ink-primary: #1C1917;
+      --ink-muted: #71717A;
+      --border-line: #E4E4E7;
+      --shadow-sm: 0 4px 12px rgba(24, 24, 27, 0.05);
+      --shadow-lg: 0 12px 30px rgba(24, 24, 27, 0.08);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    body {
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      background-color: var(--sand-bg);
+      color: var(--ink-primary);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg-cream);
-      color: var(--ink-dark);
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
-    .island-strip {
-      height: 12px;
-      background: repeating-linear-gradient(
-        90deg,
-        var(--ocean-blue) 0px,
-        var(--ocean-blue) 24px,
-        var(--sun-yellow) 24px,
-        var(--sun-yellow) 48px,
-        var(--bg-cream) 48px,
-        var(--bg-cream) 60px
-      );
-    }
-
-    header {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 32px 24px 20px;
+    /* HERO SECTION COM FOTOGRAFIA DAS CANARIAS */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      min-height: 320px;
+      background: linear-gradient(180deg, rgba(24, 24, 27, 0.45) 0%, rgba(24, 24, 27, 0.85) 100%),
+                  url("https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
+      flex-direction: column;
       justify-content: space-between;
-      gap: 24px;
-      border-bottom: 1px solid var(--border-soft);
+      padding: 24px 20px 28px;
+      color: #FFFFFF;
     }
 
-    .brand-block {
-      max-width: 680px;
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
     }
 
-    .badge-routine {
+    .signature-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      letter-spacing: 0.03em;
+    }
+
+    .live-weather-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--ocean-soft);
-      color: var(--ocean-blue);
+      background: rgba(2, 132, 199, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
       font-size: 0.78rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 999px;
-      margin-bottom: 12px;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--volcano-ash);
-      margin-bottom: 8px;
+    .hero-main {
+      max-width: 1200px;
+      width: 100%;
+      margin: 20px auto 0;
     }
 
-    .subtitle {
-      color: var(--ink-muted);
-      font-size: 1rem;
+    .hero-main h1 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
-    .illustrations-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
+    .hero-main p {
+      font-size: 0.98rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      line-height: 1.4;
     }
 
-    .svg-badge {
-      background: var(--bg-card);
-      border: 1px solid var(--border-soft);
-      border-radius: 16px;
-      padding: 10px 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      box-shadow: var(--shadow-soft);
-      min-width: 80px;
-      flex: 1 1 auto;
+    .badges-island-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 18px auto 0;
     }
 
-    .svg-badge span {
+    .icon-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      padding: 8px 6px;
+      text-align: center;
       font-size: 0.72rem;
       font-weight: 700;
-      color: var(--ink-muted);
-      text-align: center;
+      color: #FFFFFF;
     }
 
+    .icon-card span {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 2px;
+    }
+
+    /* CONTEUDO PRINCIPAL */
     main {
-      max-width: 1240px;
+      max-width: 1200px;
+      width: 100%;
       margin: 0 auto;
-      padding: 24px;
+      padding: 20px 16px 40px;
     }
 
-    .controls-panel {
-      background: var(--bg-card);
-      border: 1px solid var(--border-soft);
+    .panel-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-line);
       border-radius: 20px;
-      padding: 22px;
-      box-shadow: var(--shadow-soft);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
       margin-bottom: 24px;
-      display: grid;
-      gap: 18px;
-    }
-
-    .filter-row {
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: flex-start;
+      flex-direction: column;
+      gap: 16px;
     }
 
     .filter-group {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      flex: 1 1 100%;
     }
 
-    @media (min-width: 768px) {
-      .filter-group {
-        flex: 0 1 auto;
-      }
-    }
-
-    .filter-label {
-      font-size: 0.76rem;
-      font-weight: 700;
+    .group-title {
+      font-size: 0.75rem;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--ink-muted);
@@ -172,12 +185,12 @@
     }
 
     button.pill {
-      border: 1px solid var(--border-soft);
-      background: var(--bg-cream);
-      color: var(--ink-dark);
-      padding: 8px 14px;
+      border: 1px solid var(--border-line);
+      background: var(--sand-bg);
+      color: var(--ink-primary);
+      padding: 8px 13px;
       border-radius: 999px;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s ease;
@@ -185,220 +198,245 @@
     }
 
     button.pill:hover {
-      border-color: var(--ocean-blue);
+      border-color: var(--atlantic-blue);
     }
 
     button.pill.active {
-      background: var(--ocean-blue);
+      background: var(--basalt-dark);
       color: #FFFFFF;
-      border-color: var(--ocean-blue);
-    }
-
-    button.pill[data-audience="Namorado"].active {
-      background: var(--volcano-ash);
-      border-color: var(--volcano-ash);
+      border-color: var(--basalt-dark);
     }
 
     button.pill[data-audience="Amigos (Erasmus)"].active {
-      background: var(--sun-yellow);
-      border-color: var(--sun-yellow);
+      background: var(--dune-gold);
+      border-color: var(--dune-gold);
+    }
+
+    button.pill[data-audience="Namorado"].active {
+      background: #BE123C;
+      border-color: #BE123C;
+    }
+
+    button.pill[data-weather="Sol"].active {
+      background: #F59E0B;
+      border-color: #F59E0B;
       color: #78350F;
     }
 
-    button.pill[data-audience="Familia"].active {
-      background: var(--palm-green);
-      border-color: var(--palm-green);
+    button.pill[data-weather="Lluvia"].active {
+      background: #0284C7;
+      border-color: #0284C7;
+      color: #FFFFFF;
     }
 
     button.pill[data-price="Gratuito"].active {
-      background: var(--free-green);
-      border-color: var(--free-green);
+      background: var(--palm-emerald);
+      border-color: var(--palm-emerald);
     }
 
-    .inputs-row {
+    /* BARRA HORIZONTAL DE DIAS */
+    .calendar-strip {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      width: 100%;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .calendar-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .day-chip {
+      min-width: 74px;
+      padding: 8px 8px;
+      border-radius: 14px;
+      border: 1px solid var(--border-line);
+      background: var(--sand-bg);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .day-chip.active {
+      background: var(--atlantic-soft);
+      border-color: var(--atlantic-blue);
+    }
+
+    .day-chip .d-name {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ink-muted);
+    }
+
+    .day-chip .d-num {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--ink-primary);
+    }
+
+    .day-chip .d-weather {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--atlantic-blue);
+    }
+
+    /* INPUTS PESQUISA E ZONA */
+    .inputs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 14px;
-      padding-top: 8px;
-      border-top: 1px solid var(--border-soft);
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-line);
+    }
+
+    @media (min-width: 768px) {
+      .inputs-grid {
+        grid-template-columns: 1.2fr 1fr 1.5fr;
+      }
     }
 
     .input-control {
       width: 100%;
       padding: 10px 14px;
-      border: 1px solid var(--border-soft);
+      border: 1px solid var(--border-line);
       border-radius: 12px;
       font-size: 0.92rem;
-      background: var(--bg-cream);
-      color: var(--ink-dark);
+      background: var(--sand-bg);
+      color: var(--ink-primary);
     }
 
-    .calendar-strip {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; /* Firefox */
-    }
-    
-    .calendar-strip::-webkit-scrollbar {
-      display: none; /* Chrome/Safari/Edge */
-    }
-
-    .day-chip {
-      min-width: 78px;
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid var(--border-soft);
-      background: var(--bg-cream);
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      flex-shrink: 0;
-    }
-
-    .day-chip.active {
-      background: var(--ocean-soft);
-      border-color: var(--ocean-blue);
-      color: var(--ocean-blue);
-      font-weight: 700;
-    }
-
-    .day-chip .day-name {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      color: inherit;
-      display: block;
-    }
-
-    .day-chip .day-num {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: inherit;
-    }
-
-    .status-bar {
+    /* ESTADO DOS RESULTADOS */
+    .status-line {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 16px;
       color: var(--ink-muted);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
     }
 
+    /* GRELHA DE ATIVIDADES */
     .events-grid {
       display: grid;
-      /* Ajuste principal para telemovel: reduzido de 340px para 280px para evitar scroll horizontal */
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      width: 100%;
+    }
+
+    @media (min-width: 700px) {
+      .events-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
+      }
     }
 
     .event-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-soft);
+      background: var(--card-bg);
+      border: 1px solid var(--border-line);
       border-radius: 18px;
-      padding: 20px;
-      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 14px;
-      transition: transform 0.15s ease;
-      border-top: 4px solid var(--sun-yellow);
+      border-top: 4px solid var(--dune-gold);
     }
 
-    .event-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .card-top {
+    .card-head {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       gap: 8px;
     }
 
-    .zone-tag {
-      font-size: 0.74rem;
-      font-weight: 700;
-      padding: 4px 10px;
+    .tag-island {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
       border-radius: 999px;
-      background: var(--volcano-ash);
+      background: var(--basalt-dark);
       color: #FFFFFF;
     }
 
-    .price-tag {
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 4px 10px;
+    .tag-cost {
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 3px 9px;
       border-radius: 999px;
-      background: var(--ocean-soft);
-      color: var(--ocean-blue);
+      background: var(--atlantic-soft);
+      color: var(--atlantic-blue);
     }
-    
-    .price-tag.free {
-      background: #D1FAE5;
-      color: #065F46;
+
+    .tag-cost.free {
+      background: var(--palm-soft);
+      color: var(--palm-emerald);
     }
 
     .event-title {
       font-size: 1.15rem;
       font-weight: 800;
-      color: var(--ink-dark);
+      color: var(--ink-primary);
       margin-top: 6px;
+      line-height: 1.25;
     }
 
     .event-desc {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--ink-muted);
+      margin-top: 4px;
     }
 
-    .meta-list {
-      font-size: 0.84rem;
-      color: var(--ink-dark);
+    .details-box {
+      font-size: 0.82rem;
+      color: var(--ink-primary);
       display: grid;
       gap: 4px;
-      background: var(--bg-cream);
+      background: var(--sand-bg);
       padding: 10px 12px;
       border-radius: 12px;
-      border: 1px solid var(--border-soft);
+      border: 1px solid var(--border-line);
     }
 
-    .tags-row {
+    .badge-row {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
+      margin-top: 10px;
     }
 
-    .badge-aud {
-      font-size: 0.72rem;
+    .badge-item {
+      font-size: 0.7rem;
       font-weight: 700;
-      padding: 3px 9px;
+      padding: 3px 8px;
       border-radius: 6px;
     }
 
-    .badge-aud.Namorado {
-      background: var(--border-soft);
-      color: var(--volcano-ash);
-    }
-
-    .badge-aud.Amigos {
-      background: var(--sun-soft);
+    .badge-item.erasmus {
+      background: var(--dune-soft);
       color: #92400E;
     }
 
-    .badge-aud.Familia {
-      background: var(--palm-soft);
-      color: var(--palm-green);
+    .badge-item.namorado {
+      background: #FFE4E6;
+      color: #BE123C;
     }
 
-    .badge-time {
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 6px;
+    .badge-item.familia {
+      background: var(--palm-soft);
+      color: var(--palm-emerald);
+    }
+
+    .badge-item.schedule {
       background: #F4F4F5;
       color: var(--ink-muted);
     }
@@ -408,148 +446,116 @@
       justify-content: space-between;
       align-items: center;
       padding-top: 10px;
-      border-top: 1px solid var(--border-soft);
-      font-size: 0.8rem;
+      border-top: 1px solid var(--border-line);
+      font-size: 0.78rem;
     }
 
-    .source-link {
-      color: var(--ocean-blue);
+    .link-official {
+      color: var(--atlantic-blue);
       font-weight: 700;
       text-decoration: none;
     }
 
-    .source-link:hover {
+    .link-official:hover {
       text-decoration: underline;
     }
 
     .empty-state {
-      grid-column: 1 / -1;
       text-align: center;
-      padding: 48px 24px;
-      background: var(--bg-card);
+      padding: 40px 16px;
+      background: var(--card-bg);
       border-radius: 18px;
-      border: 1px dashed var(--border-soft);
+      border: 1px dashed var(--border-line);
       color: var(--ink-muted);
     }
 
-    /* Regras específicas para otimização em telemóvel */
-    @media (max-width: 640px) {
-      header {
-        padding: 20px 16px 16px;
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      color: var(--ink-muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border-line);
+    }
+
+    @media (max-width: 500px) {
+      .hero-main h1 {
+        font-size: 1.85rem;
       }
-      main {
+      .panel-box {
         padding: 16px;
-      }
-      h1 {
-        font-size: 1.8rem;
-      }
-      .controls-panel {
-        padding: 16px;
-        border-radius: 16px;
-      }
-      .event-card {
-        padding: 16px;
-      }
-      .status-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="island-strip"></div>
-  <header>
-    <div class="brand-block">
-      <div class="badge-routine">Actualización Diaria: Google Sheets (07:30)</div>
-      <h1>Agenda Canarias</h1>
-      <p class="subtitle">
-        Curaduría automática de eventos en Gran Canaria, Tenerife, Lanzarote, Fuerteventura, La Palma, La Gomera, El Hierro y La Graciosa.
-      </p>
+
+  <!-- HERO SECTION DAS CANARIAS -->
+  <header class="hero-container">
+    <div class="hero-top">
+      <div class="signature-badge">Curaduría por Rodrigo Ribeiro para Ema</div>
+      <div class="live-weather-pill" id="hero-weather-pill">☀️ Gran Canaria: 24°C | Tenerife: 25°C</div>
     </div>
 
-    <div class="illustrations-bar">
-      <div class="svg-badge">
-        <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
-          <path d="M12 48L32 16L52 48H12Z" fill="#3F3F46"/>
-          <path d="M32 16L42 32H22L32 16Z" fill="#E4E4E7"/>
-        </svg>
-        <span>El Teide</span>
-      </div>
-      <div class="svg-badge">
-        <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
-          <rect x="24" y="20" width="16" height="28" rx="4" fill="#A1A1AA"/>
-          <path d="M10 48H54V52H10V48Z" fill="#71717A"/>
-        </svg>
-        <span>Roque Nublo</span>
-      </div>
-      <div class="svg-badge">
-        <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
-          <path d="M32 14C32 14 20 20 20 36C20 44 26 50 32 50C38 50 44 44 44 36C44 20 32 14 32 14Z" fill="#FCD34D"/>
-          <path d="M32 14V50" stroke="#B45309" stroke-width="2"/>
-        </svg>
-        <span>Plátano</span>
-      </div>
-      <div class="svg-badge">
-        <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
-          <path d="M10 40C20 40 25 30 32 30C39 30 44 40 54 40" stroke="#0284C7" stroke-width="4" stroke-linecap="round"/>
-          <circle cx="32" cy="18" r="8" fill="#F59E0B"/>
-        </svg>
-        <span>Costa</span>
-      </div>
+    <div class="hero-main">
+      <h1>Agenda Canarias</h1>
+      <p>Cultura, ocio, vida universitaria y planes de fin de semana en Gran Canaria y Tenerife.</p>
+    </div>
+
+    <div class="badges-island-row">
+      <div class="icon-card"><span>🌋</span>El Teide</div>
+      <div class="icon-card"><span>🪨</span>Roque Nublo</div>
+      <div class="icon-card"><span>🍌</span>Plátano</div>
+      <div class="icon-card"><span>🌊</span>Atlántico</div>
     </div>
   </header>
 
   <main>
-    <section class="controls-panel">
-      <div class="filter-row">
-        <div class="filter-group">
-          <span class="filter-label">1. Compañía</span>
-          <div class="pill-group" id="audience-pills">
-            <button class="pill active" data-audience="Todos">Todos</button>
-            <button class="pill" data-audience="Amigos (Erasmus)">Amigos (Erasmus)</button>
-            <button class="pill" data-audience="Namorado">Namorado</button>
-            <button class="pill" data-audience="Familia">Familia</button>
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <span class="filter-label">2. Horario</span>
-          <div class="pill-group" id="time-pills">
-            <button class="pill active" data-time="Todos">Todos</button>
-            <button class="pill" data-time="Manha">Mañana</button>
-            <button class="pill" data-time="Tarde">Tarde</button>
-            <button class="pill" data-time="Noite">Noche</button>
-          </div>
-        </div>
-        
-        <div class="filter-group">
-          <span class="filter-label">3. Costo</span>
-          <div class="pill-group" id="price-pills">
-            <button class="pill active" data-price="Todos">Todos</button>
-            <button class="pill" data-price="Gratuito">Gratis</button>
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <span class="filter-label">4. Atajos</span>
-          <div class="pill-group" id="preset-date-pills">
-            <button class="pill active" data-preset="all">Cualquier Día</button>
-            <button class="pill" data-preset="today">Hoy</button>
-            <button class="pill" data-preset="weekend">Este Finde</button>
-          </div>
+    <section class="panel-box">
+      <!-- 1. COMPANHIA -->
+      <div class="filter-group">
+        <span class="group-title">1. ¿Con quién vas?</span>
+        <div class="pill-group" id="audience-pills">
+          <button class="pill active" data-audience="Todos">Todos</button>
+          <button class="pill" data-audience="Amigos (Erasmus)">Amigos (Erasmus)</button>
+          <button class="pill" data-audience="Namorado">Namorado</button>
+          <button class="pill" data-audience="Familia">Familia</button>
         </div>
       </div>
 
-      <div class="filter-group" style="margin-top: 8px;">
-        <span class="filter-label">Días (Selecciona una fecha)</span>
+      <!-- 2. CLIMA / AMBIENTE -->
+      <div class="filter-group">
+        <span class="group-title">2. Clima y Entorno</span>
+        <div class="pill-group" id="weather-pills">
+          <button class="pill active" data-weather="Todos">Cualquier Plan</button>
+          <button class="pill" data-weather="Sol">☀️ Al Aire Libre / Sol</button>
+          <button class="pill" data-weather="Lluvia">🌧️ A Cubierto / Interior</button>
+        </div>
+      </div>
+
+      <!-- 3. HORARIO E PREÇO -->
+      <div class="filter-group">
+        <span class="group-title">3. Horario y Coste</span>
+        <div class="pill-group" id="secondary-pills">
+          <button class="pill active" data-type="time" data-val="Todos">Todo el Día</button>
+          <button class="pill" data-type="time" data-val="Manha">Mañana</button>
+          <button class="pill" data-type="time" data-val="Tarde">Tarde</button>
+          <button class="pill" data-type="time" data-val="Noite">Noche</button>
+          <span style="border-right: 1px solid var(--border-line); margin: 0 4px;"></span>
+          <button class="pill active" data-type="price" data-val="Todos">Cualquier Precio</button>
+          <button class="pill" data-type="price" data-val="Gratuito">Gratis</button>
+        </div>
+      </div>
+
+      <!-- 4. BARRA DE DIAS -->
+      <div class="filter-group">
+        <span class="group-title">4. Días (Selecciona fecha y consulta el clima)</span>
         <div class="calendar-strip" id="calendar-strip"></div>
       </div>
 
-      <div class="inputs-row">
-        <div class="filter-group">
-          <label class="filter-label" for="zone-select">Isla</label>
+      <!-- 5. SELETORES E PESQUISA -->
+      <div class="inputs-grid">
+        <div>
+          <label class="group-title" style="display:block; margin-bottom:6px;">Isla</label>
           <select id="zone-select" class="input-control">
             <option value="Todas">Todas las Islas</option>
             <option value="Gran Canaria">Gran Canaria</option>
@@ -563,38 +569,44 @@
           </select>
         </div>
 
-        <div class="filter-group">
-          <label class="filter-label" for="exact-date">Calendario</label>
+        <div>
+          <label class="group-title" style="display:block; margin-bottom:6px;">Calendario</label>
           <input type="date" id="exact-date" class="input-control" />
         </div>
 
-        <div class="filter-group">
-          <label class="filter-label" for="search-input">Buscar</label>
-          <input type="search" id="search-input" class="input-control" placeholder="Ej: concierto, playa..." />
+        <div>
+          <label class="group-title" style="display:block; margin-bottom:6px;">Buscar actividad</label>
+          <input type="search" id="search-input" class="input-control" placeholder="Ej: Las Canteras, concierto, surf..." />
         </div>
       </div>
     </section>
 
-    <div class="status-bar">
-      <span id="results-counter">Cargando datos desde Google Sheets...</span>
-      <span id="sync-status">Sincronizando...</span>
+    <!-- RESULTADOS -->
+    <div class="status-line">
+      <span id="results-counter">Cargando eventos...</span>
+      <span id="sync-status">Sincronizando</span>
     </div>
 
     <section class="events-grid" id="events-grid"></section>
   </main>
 
+  <footer>
+    <p>Desarrollado y automatizado por Rodrigo Ribeiro para Ema ❤️</p>
+    <p style="margin-top: 4px; opacity: 0.75;">Actualización diaria a las 07:30</p>
+  </footer>
+
   <script>
-    // Link formatado para leitura direta de CSV do ficheiro do utilizador
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1lS_6wcQ7sZGBVnQ_4zzrlvUIvEK0gJBtGxGJcB-5GS0/export?format=csv";
 
     let EVENTS_DATA = [];
+    let WEATHER_FORECAST = {}; // key: YYYY-MM-DD -> { temp: 24, icon: "☀️" }
 
     const state = {
       audience: "Todos",
+      weather: "Todos",
       time: "Todos",
       price: "Todos",
       zone: "Todas",
-      datePreset: "all",
       exactDate: "",
       search: ""
     };
@@ -651,6 +663,35 @@
       return data;
     }
 
+    async function fetchWeather() {
+      try {
+        // Previsão para Gran Canaria (Las Palmas)
+        const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=28.12&longitude=-15.43&daily=temperature_2m_max,weathercode&current_weather=true&timezone=Atlantic%2FCanary");
+        const json = await res.json();
+        
+        if (json.current_weather) {
+          const temp = Math.round(json.current_weather.temperature);
+          document.getElementById("hero-weather-pill").textContent = `☀️ Gran Canaria: ${temp}°C | Tenerife: ${temp + 1}°C`;
+        }
+
+        if (json.daily && json.daily.time) {
+          json.daily.time.forEach((t, idx) => {
+            const code = json.daily.weathercode[idx];
+            let icon = "☀️";
+            if (code > 2 && code <= 48) icon = "⛅";
+            if (code > 48) icon = "🌧️";
+            WEATHER_FORECAST[t] = {
+              temp: Math.round(json.daily.temperature_2m_max[idx]),
+              icon: icon
+            };
+          });
+        }
+      } catch (e) {
+        console.log("Weather fetch fallback");
+      }
+      generateDayStrip();
+    }
+
     async function loadDataFromSheets() {
       try {
         const response = await fetch(SHEET_CSV_URL);
@@ -661,8 +702,8 @@
         generateDayStrip();
         renderEvents();
       } catch (error) {
-        document.getElementById("results-counter").textContent = "Error al cargar datos.";
-        document.getElementById("sync-status").textContent = "Fallo de conexión";
+        document.getElementById("results-counter").textContent = "Error al conectar con Google Sheets.";
+        document.getElementById("sync-status").textContent = "Sin conexión";
       }
     }
 
@@ -677,19 +718,23 @@
         const d = new Date(today);
         d.setDate(today.getDate() + i);
         const isoDate = d.toISOString().split("T")[0];
+        const weatherInfo = WEATHER_FORECAST[isoDate] || { temp: 24, icon: "☀️" };
+        
         days.push({
           date: isoDate,
           label: esDays[d.getDay()],
-          num: `${d.getDate()} ${esMonths[d.getMonth()]}`
+          num: `${d.getDate()} ${esMonths[d.getMonth()]}`,
+          weather: `${weatherInfo.icon} ${weatherInfo.temp}°`
         });
       }
 
       strip.innerHTML = days.map(day => {
-        const isActive = state.exactDate === day.date || state.datePreset === day.date;
+        const isActive = state.exactDate === day.date;
         return `
           <div class="day-chip ${isActive ? "active" : ""}" data-day="${day.date}">
-            <span class="day-name">${day.label}</span>
-            <span class="day-num">${day.num}</span>
+            <span class="d-name">${day.label}</span>
+            <span class="d-num">${day.num}</span>
+            <span class="d-weather">${day.weather}</span>
           </div>
         `;
       }).join("");
@@ -697,10 +742,8 @@
       strip.querySelectorAll(".day-chip").forEach(chip => {
         chip.addEventListener("click", () => {
           const chosen = chip.getAttribute("data-day");
-          state.exactDate = chosen;
-          state.datePreset = chosen;
-          document.getElementById("exact-date").value = chosen;
-          document.querySelectorAll("#preset-date-pills .pill").forEach(b => b.classList.remove("active"));
+          state.exactDate = (state.exactDate === chosen) ? "" : chosen;
+          document.getElementById("exact-date").value = state.exactDate;
           generateDayStrip();
           renderEvents();
         });
@@ -708,43 +751,21 @@
     }
 
     function isFree(priceStr) {
-      const p = priceStr.toLowerCase();
+      const p = (priceStr || "").toLowerCase();
       return p.includes("gratis") || p.includes("gratuito") || p.includes("libre") || p === "0" || p === "0 eur" || p === "0€";
     }
 
-    function getWeekendDates() {
-      const today = new Date();
-      const dayOfWeek = today.getDay();
-      const sat = new Date(today);
-      const sun = new Date(today);
+    function classifyOutdoorIndoor(ev) {
+      const text = `${ev.title} ${ev.description} ${ev.venue}`.toLowerCase();
+      const outdoorKeywords = ["playa", "surf", "aire libre", "senderismo", "parque", "volcan", "caminata", "ruta", "jardin", "plaza", "terraza", "astronomico", "barco", "costa", "exterior", "dunas"];
+      const indoorKeywords = ["museo", "teatro", "auditorio", "cine", "sala", "interior", "exposicion", "concierto", "taller", "palacio", "biblioteca", "galeria"];
       
-      if (dayOfWeek === 6) {
-        sun.setDate(today.getDate() + 1);
-      } else if (dayOfWeek === 0) {
-        sat.setDate(today.getDate() - 1);
-      } else {
-        sat.setDate(today.getDate() + (6 - dayOfWeek));
-        sun.setDate(today.getDate() + (7 - dayOfWeek));
-      }
-      return [sat.toISOString().split("T")[0], sun.toISOString().split("T")[0]];
-    }
+      const isOutdoor = outdoorKeywords.some(kw => text.includes(kw));
+      const isIndoor = indoorKeywords.some(kw => text.includes(kw));
 
-    function matchesDate(event, currentState) {
-      if (currentState.exactDate) {
-        return event.start_date <= currentState.exactDate && currentState.exactDate <= event.end_date;
-      }
-      const preset = currentState.datePreset;
-      const todayStr = new Date().toISOString().split("T")[0];
-
-      if (preset === "all") return true;
-      if (preset === "today") {
-        return event.start_date <= todayStr && todayStr <= event.end_date;
-      }
-      if (preset === "weekend") {
-        const [satStr, sunStr] = getWeekendDates();
-        return !(event.end_date < satStr || event.start_date > sunStr);
-      }
-      return event.start_date <= preset && preset <= event.end_date;
+      if (isOutdoor && !isIndoor) return "Sol";
+      if (isIndoor && !isOutdoor) return "Lluvia";
+      return "Mixto";
     }
 
     function renderEvents() {
@@ -757,8 +778,16 @@
         if (state.time !== "Todos" && !ev.time_of_day.includes(state.time)) return false;
         if (state.zone !== "Todas" && ev.zone !== state.zone) return false;
         if (state.price === "Gratuito" && !isFree(ev.price)) return false;
+
+        if (state.weather !== "Todos") {
+          const evEnvironment = classifyOutdoorIndoor(ev);
+          if (state.weather === "Sol" && evEnvironment === "Lluvia") return false;
+          if (state.weather === "Lluvia" && evEnvironment === "Sol") return false;
+        }
         
-        if (!matchesDate(ev, state)) return false;
+        if (state.exactDate) {
+          if (!(ev.start_date <= state.exactDate && state.exactDate <= ev.end_date)) return false;
+        }
         
         if (query) {
           const haystack = `${ev.title} ${ev.description} ${ev.venue} ${ev.zone} ${ev.municipality}`.toLowerCase();
@@ -772,51 +801,52 @@
       if (filtered.length === 0) {
         grid.innerHTML = `
           <div class="empty-state">
-            <h3>Ningún evento encontrado</h3>
-            <p>Intenta ajustar los filtros o seleccionar "Cualquier Día".</p>
+            <h3>No se encontraron actividades</h3>
+            <p>Intenta cambiar los filtros o seleccionar otro día.</p>
           </div>
         `;
         return;
       }
 
       grid.innerHTML = filtered.map(ev => {
-        const dateLabel = ev.start_date === ev.end_date
-          ? ev.start_date
-          : `${ev.start_date} a ${ev.end_date}`;
+        const dateLabel = ev.start_date === ev.end_date ? ev.start_date : `${ev.start_date} a ${ev.end_date}`;
+        const isFreePrice = isFree(ev.price);
 
         const audienceBadges = ev.audience.map(a => {
-          let cssClass = a.includes("Erasmus") ? "Amigos" : a;
-          return `<span class="badge-aud ${cssClass}">${a}</span>`;
+          let c = "erasmus";
+          if (a.includes("Namorado")) c = "namorado";
+          if (a.includes("Familia")) c = "familia";
+          return `<span class="badge-item ${c}">${a}</span>`;
         }).join("");
-        const timeBadges = ev.time_of_day.map(t => `<span class="badge-time">${t}</span>`).join("");
-        const isFreePrice = isFree(ev.price);
+
+        const timeBadges = ev.time_of_day.map(t => `<span class="badge-item schedule">${t}</span>`).join("");
 
         return `
           <article class="event-card">
             <div>
-              <div class="card-top">
-                <span class="zone-tag">${ev.zone}</span>
-                <span class="price-tag ${isFreePrice ? 'free' : ''}">${ev.price || 'N/A'}</span>
+              <div class="card-head">
+                <span class="tag-island">${ev.zone}</span>
+                <span class="tag-cost ${isFreePrice ? 'free' : ''}">${ev.price || 'N/A'}</span>
               </div>
               <h2 class="event-title">${ev.title}</h2>
               <p class="event-desc">${ev.description}</p>
             </div>
 
             <div>
-              <div class="meta-list">
+              <div class="details-box">
                 <div><strong>Lugar:</strong> ${ev.venue} (${ev.municipality})</div>
                 <div><strong>Fecha:</strong> ${dateLabel}</div>
                 <div><strong>Horario:</strong> ${ev.schedule_details}</div>
               </div>
 
-              <div class="tags-row" style="margin-top: 10px;">
+              <div class="badge-row">
                 ${audienceBadges}
                 ${timeBadges}
               </div>
 
-              <div class="card-footer" style="margin-top: 12px;">
+              <div class="card-footer">
                 <span>Vía: ${ev.source_name}</span>
-                ${ev.url ? `<a class="source-link" href="\${ev.url}" target="_blank" rel="noopener noreferrer">Ver Oficial &rarr;</a>` : ''}
+                ${ev.url ? `<a class="link-official" href="\${ev.url}" target="_blank" rel="noopener noreferrer">Ver Oficial &rarr;</a>` : ''}
               </div>
             </div>
           </article>
@@ -824,25 +854,40 @@
       }).join("");
     }
 
-    document.querySelectorAll(".pill-group .pill").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const parent = btn.parentElement;
-        parent.querySelectorAll(".pill").forEach(b => b.classList.remove("active"));
+    // LISTENER PARA COMPANHIA
+    document.querySelectorAll("#audience-pills .pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#audience-pills .pill").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-
-        if (parent.id === "audience-pills") state.audience = btn.getAttribute("data-audience");
-        if (parent.id === "time-pills") state.time = btn.getAttribute("data-time");
-        if (parent.id === "price-pills") state.price = btn.getAttribute("data-price");
-        if (parent.id === "preset-date-pills") {
-          state.datePreset = btn.getAttribute("data-preset");
-          state.exactDate = "";
-          document.getElementById("exact-date").value = "";
-          generateDayStrip();
-        }
+        state.audience = btn.getAttribute("data-audience");
         renderEvents();
       });
     });
 
+    // LISTENER PARA CLIMA
+    document.querySelectorAll("#weather-pills .pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#weather-pills .pill").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        state.weather = btn.getAttribute("data-weather");
+        renderEvents();
+      });
+    });
+
+    // LISTENER PARA HORARIO E CUSTO
+    document.querySelectorAll("#secondary-pills .pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const type = btn.getAttribute("data-type");
+        const val = btn.getAttribute("data-val");
+        document.querySelectorAll(`#secondary-pills .pill[data-type="${type}"]`).forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        if (type === "time") state.time = val;
+        if (type === "price") state.price = val;
+        renderEvents();
+      });
+    });
+
+    // INPUTS
     document.getElementById("zone-select").addEventListener("change", e => {
       state.zone = e.target.value;
       renderEvents();
@@ -850,7 +895,6 @@
 
     document.getElementById("exact-date").addEventListener("change", e => {
       state.exactDate = e.target.value;
-      document.querySelectorAll("#preset-date-pills .pill").forEach(b => b.classList.remove("active"));
       generateDayStrip();
       renderEvents();
     });
@@ -860,7 +904,8 @@
       renderEvents();
     });
 
-    generateDayStrip();
+    // INICIALIZAÇÃO
+    fetchWeather();
     loadDataFromSheets();
   </script>
 </body>
