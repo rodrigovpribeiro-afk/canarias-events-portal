@@ -6,21 +6,21 @@
   <title>Canárias Spotter: Gran Canaria, Tenerife &amp; Ilhas</title>
   <style>
     :root {
+      --bg-cream: #FFFDF7;
+      --bg-card: #FFFFFF;
       --ocean-blue: #0284C7;
-      --ocean-deep: #0369A1;
       --ocean-soft: #E0F2FE;
-      --sun-yellow: #FBBF24;
-      --sun-gold: #D97706;
+      --ocean-deep: #0369A1;
+      --sun-yellow: #F59E0B;
       --sun-soft: #FEF3C7;
-      --card-white: #FFFFFF;
-      --bg-cream: #FAF9F6;
-      --palm-green: #10B981;
-      --palm-soft: #D1FAE5;
-      --ink-black: #0F172A;
+      --volcano-dark: #334155;
+      --volcano-soft: #F1F5F9;
+      --free-green: #10B981;
+      --free-soft: #D1FAE5;
+      --ink-dark: #0F172A;
       --ink-muted: #64748B;
       --border-soft: #E2E8F0;
-      --shadow-clean: 0 4px 20px -2px rgba(2, 132, 199, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
-      --shadow-hover: 0 12px 28px -4px rgba(2, 132, 199, 0.14);
+      --shadow-soft: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
     }
 
     * {
@@ -35,150 +35,141 @@
       max-width: 100%;
       overflow-x: hidden;
       background-color: var(--bg-cream);
-      color: var(--ink-black);
+      color: var(--ink-dark);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.5;
     }
 
-    /* TOPO MINIMALISTA & LUMINOSO COM MAR DAS CANARIAS */
-    .hero-canarias {
-      position: relative;
-      width: 100%;
-      background: linear-gradient(180deg, rgba(2, 132, 199, 0.72) 0%, rgba(3, 105, 161, 0.88) 100%),
-                  url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
-      color: #FFFFFF;
-      padding: 28px 20px 32px;
-      border-bottom: 5px solid var(--sun-yellow);
+    .island-strip {
+      height: 12px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--ocean-blue) 0px,
+        var(--ocean-blue) 24px,
+        var(--sun-yellow) 24px,
+        var(--sun-yellow) 48px,
+        var(--bg-cream) 48px,
+        var(--bg-cream) 60px
+      );
     }
 
-    .hero-inner {
-      max-width: 1200px;
+    header {
+      max-width: 1240px;
       margin: 0 auto;
+      padding: 28px 20px 18px;
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .hero-topline {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .badge-status {
-      display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.22);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      color: #FFFFFF;
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 6px 14px;
-      border-radius: 999px;
-      letter-spacing: 0.02em;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--border-soft);
     }
 
-    .weather-live-chip {
+    .brand-block {
+      max-width: 680px;
+    }
+
+    .badge-routine {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #FFFFFF;
+      background: var(--ocean-soft);
       color: var(--ocean-deep);
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 6px 14px;
-      border-radius: 999px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .hero-headline {
-      margin-top: 4px;
-    }
-
-    .hero-headline h1 {
-      font-size: 2.8rem;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 8px;
-      text-shadow: 0 2px 10px rgba(2, 132, 199, 0.3);
-    }
-
-    .hero-headline p {
-      font-size: 1.05rem;
-      color: rgba(255, 255, 255, 0.95);
-      max-width: 650px;
-      font-weight: 500;
-      line-height: 1.4;
-    }
-
-    /* BADGES CRIATIVOS DAS ILHAS */
-    .island-icons-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 6px;
-    }
-
-    .island-badge {
-      background: rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 14px;
-      padding: 10px 8px;
-      text-align: center;
-      color: #FFFFFF;
-      font-size: 0.74rem;
-      font-weight: 800;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-    }
-
-    .island-badge .emoji-icon {
-      font-size: 1.35rem;
-    }
-
-    /* PAINEL DE FILTROS */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 22px 16px 50px;
-    }
-
-    .panel-clean {
-      background: var(--card-white);
-      border: 1px solid var(--border-soft);
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: var(--shadow-clean);
-      margin-bottom: 24px;
-      display: grid;
-      gap: 18px;
-    }
-
-    .filter-section {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .section-title {
-      font-size: 0.76rem;
-      font-weight: 800;
+      font-size: 0.78rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--ink-dark);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+    }
+
+    .illustrations-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .svg-badge {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      box-shadow: var(--shadow-soft);
+      min-width: 82px;
+    }
+
+    .svg-badge span {
+      font-size: 0.72rem;
+      font-weight: 700;
       color: var(--ink-muted);
     }
 
-    .pills-container {
+    main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    .controls-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1 1 100%;
+    }
+
+    @media (min-width: 768px) {
+      .filter-group {
+        flex: 0 1 auto;
+      }
+    }
+
+    .filter-label {
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+    }
+
+    .pill-group {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -187,11 +178,11 @@
     button.pill {
       border: 1px solid var(--border-soft);
       background: var(--bg-cream);
-      color: var(--ink-black);
-      padding: 9px 15px;
+      color: var(--ink-dark);
+      padding: 8px 14px;
       border-radius: 999px;
       font-size: 0.88rem;
-      font-weight: 700;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.15s ease;
       white-space: nowrap;
@@ -213,27 +204,45 @@
     }
 
     button.pill[data-audience="Amigos (Erasmus)"].active {
-      background: var(--sun-gold);
-      border-color: var(--sun-gold);
-    }
-
-    button.pill[data-weather="Sol"].active {
-      background: #F59E0B;
-      border-color: #F59E0B;
+      background: var(--sun-yellow);
+      border-color: var(--sun-yellow);
       color: #78350F;
     }
 
-    button.pill[data-weather="Lluvia"].active {
-      background: #0284C7;
-      border-color: #0284C7;
+    button.pill[data-audience="Familia"].active {
+      background: #059669;
+      border-color: #059669;
     }
 
     button.pill[data-price="Gratuito"].active {
-      background: var(--palm-green);
-      border-color: var(--palm-green);
+      background: var(--free-green);
+      border-color: var(--free-green);
     }
 
-    /* BARRA HORIZONTAL DE DIAS & CLIMA */
+    .inputs-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    @media (min-width: 768px) {
+      .inputs-row {
+        grid-template-columns: 1.2fr 1fr 1.5fr;
+      }
+    }
+
+    .input-control {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      font-size: 0.92rem;
+      background: var(--bg-cream);
+      color: var(--ink-dark);
+    }
+
     .calendar-strip {
       display: flex;
       gap: 8px;
@@ -248,85 +257,50 @@
     }
 
     .day-chip {
-      min-width: 76px;
-      padding: 9px 8px;
-      border-radius: 14px;
+      min-width: 74px;
+      padding: 8px 8px;
+      border-radius: 12px;
       border: 1px solid var(--border-soft);
       background: var(--bg-cream);
       text-align: center;
       cursor: pointer;
       transition: all 0.15s ease;
       flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
     }
 
     .day-chip.active {
-      background: var(--sun-soft);
-      border-color: var(--sun-yellow);
+      background: var(--ocean-soft);
+      border-color: var(--ocean-blue);
+      font-weight: 700;
     }
 
-    .day-chip .d-name {
+    .day-chip .day-name {
       font-size: 0.68rem;
       text-transform: uppercase;
-      font-weight: 800;
       color: var(--ink-muted);
+      display: block;
     }
 
-    .day-chip .d-num {
-      font-size: 0.94rem;
-      font-weight: 800;
-      color: var(--ink-black);
-    }
-
-    .day-chip .d-temp {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--ocean-deep);
-    }
-
-    /* FORMULARIOS DE PESQUISA */
-    .selectors-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border-soft);
-    }
-
-    @media (min-width: 768px) {
-      .selectors-row {
-        grid-template-columns: 1.2fr 1fr 1.5fr;
-      }
-    }
-
-    .input-field {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1px solid var(--border-soft);
-      border-radius: 12px;
+    .day-chip .day-num {
       font-size: 0.92rem;
-      background: var(--bg-cream);
-      color: var(--ink-black);
-      font-weight: 500;
+      font-weight: 700;
+      color: var(--ink-dark);
     }
 
-    /* BARRA DE CONTAGEM */
-    .status-banner {
+    .status-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 16px;
       color: var(--ink-muted);
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-size: 0.88rem;
+      font-weight: 600;
       flex-wrap: wrap;
       gap: 8px;
     }
 
     .btn-refresh {
-      background: var(--bg-cream);
+      background: var(--bg-card);
       border: 1px solid var(--border-soft);
       border-radius: 8px;
       padding: 5px 12px;
@@ -343,11 +317,10 @@
       background: var(--ocean-soft);
     }
 
-    /* CARTOES DE ATIVIDADES */
     .events-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 18px;
+      gap: 16px;
       width: 100%;
     }
 
@@ -359,131 +332,131 @@
     }
 
     .event-card {
-      background: var(--card-white);
+      background: var(--bg-card);
       border: 1px solid var(--border-soft);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: var(--shadow-clean);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 14px;
-      border-top: 5px solid var(--ocean-blue);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      border-top: 4px solid var(--ocean-blue);
+      transition: transform 0.15s ease;
     }
 
-    .card-topbar {
+    .card-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       gap: 8px;
     }
 
-    .island-tag {
+    .zone-tag {
       font-size: 0.74rem;
-      font-weight: 800;
+      font-weight: 700;
       padding: 4px 10px;
       border-radius: 999px;
       background: var(--ocean-soft);
       color: var(--ocean-deep);
     }
 
-    .cost-tag {
-      font-size: 0.76rem;
-      font-weight: 800;
+    .price-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
       padding: 4px 10px;
       border-radius: 999px;
       background: var(--sun-soft);
       color: #92400E;
     }
-
-    .cost-tag.free {
-      background: var(--palm-soft);
-      color: var(--palm-green);
+    
+    .price-tag.free {
+      background: var(--free-soft);
+      color: #065F46;
     }
 
     .event-title {
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: var(--ink-black);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink-dark);
       margin-top: 6px;
       line-height: 1.25;
-      letter-spacing: -0.01em;
     }
 
     .event-desc {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--ink-muted);
-      margin-top: 5px;
-      line-height: 1.45;
+      margin-top: 4px;
     }
 
-    .card-info-box {
-      font-size: 0.84rem;
-      color: var(--ink-black);
+    .meta-list {
+      font-size: 0.82rem;
+      color: var(--ink-dark);
       display: grid;
       gap: 4px;
       background: var(--bg-cream);
-      padding: 11px 13px;
+      padding: 10px 12px;
       border-radius: 12px;
       border: 1px solid var(--border-soft);
     }
 
-    .badges-flex {
+    .tags-row {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: 10px;
     }
 
-    .badge-pill {
+    .badge-aud {
       font-size: 0.72rem;
-      font-weight: 800;
+      font-weight: 700;
       padding: 3px 9px;
       border-radius: 6px;
     }
 
-    .badge-pill.namorado {
+    .badge-aud.Namorado {
       background: #FFE4E6;
       color: #E11D48;
     }
 
-    .badge-pill.erasmus {
+    .badge-aud.Amigos {
       background: var(--sun-soft);
-      color: #B45309;
+      color: #92400E;
     }
 
-    .badge-pill.familia {
-      background: var(--palm-soft);
-      color: var(--palm-green);
+    .badge-aud.Familia {
+      background: #D1FAE5;
+      color: #059669;
     }
 
-    .badge-pill.time {
-      background: #F1F5F9;
+    .badge-time {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: var(--volcano-soft);
       color: var(--ink-muted);
     }
 
-    .card-bottom {
+    .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 12px;
+      padding-top: 10px;
       border-top: 1px solid var(--border-soft);
       font-size: 0.82rem;
       gap: 8px;
     }
 
-    /* BOTAO TACTIL REFORCADO */
     .btn-official-touch {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      padding: 9px 18px;
+      gap: 4px;
+      padding: 8px 16px;
       background-color: var(--ocean-blue);
       color: #FFFFFF !important;
-      font-size: 0.84rem;
-      font-weight: 800;
+      font-size: 0.82rem;
+      font-weight: 700;
       border: none;
       border-radius: 10px;
       cursor: pointer;
@@ -500,100 +473,113 @@
 
     .empty-state {
       text-align: center;
-      padding: 44px 16px;
-      background: var(--card-white);
-      border-radius: 20px;
+      padding: 40px 16px;
+      background: var(--bg-card);
+      border-radius: 18px;
       border: 1px dashed var(--border-soft);
       color: var(--ink-muted);
     }
 
-    footer {
-      text-align: center;
-      padding: 28px 16px;
-      color: var(--ink-muted);
-      font-size: 0.82rem;
-      border-top: 1px solid var(--border-soft);
-    }
-
     @media (max-width: 640px) {
-      .hero-headline h1 { font-size: 2.1rem; }
-      .panel-clean { padding: 16px; }
+      h1 { font-size: 1.8rem; }
+      .controls-panel { padding: 16px; }
       .event-card { padding: 16px; }
     }
   </style>
 </head>
 <body>
+  <div class="island-strip"></div>
+  <header>
+    <div class="brand-block">
+      <div class="badge-routine">Leitura Direta: Google Sheets (Atualização às 07:30)</div>
+      <h1>Canárias Spotter</h1>
+      <p class="subtitle">
+        Curadoria de eventos e cultura em Gran Canaria, Tenerife, Lanzarote, Fuerteventura, La Palma, La Gomera, El Hierro e La Graciosa.
+      </p>
+    </div>
 
-  <!-- HERO HEADER DAS ILHAS CANÁRIAS -->
-  <header class="hero-canarias">
-    <div class="hero-inner">
-      <div class="hero-topline">
-        <div class="badge-status">Canárias Spotter • Guia Oficial</div>
-        <div class="weather-live-chip" id="weather-chip">☀️ A carregar tempo nas ilhas...</div>
+    <div class="illustrations-bar">
+      <div class="svg-badge">
+        <svg width="38" height="38" viewBox="0 0 64 64" fill="none">
+          <path d="M12 48L32 16L52 48H12Z" fill="#334155"/>
+          <path d="M32 16L42 32H22L32 16Z" fill="#E2E8F0"/>
+        </svg>
+        <span>El Teide</span>
       </div>
-
-      <div class="hero-headline">
-        <h1>Canárias Spotter</h1>
-        <p>A tua agenda diária de cultura, praia, concertos, vida universitária e escapadinhas em Gran Canaria, Tenerife e ilhas vizinhas.</p>
+      <div class="svg-badge">
+        <svg width="38" height="38" viewBox="0 0 64 64" fill="none">
+          <rect x="24" y="20" width="16" height="28" rx="4" fill="#94A3B8"/>
+          <path d="M10 48H54V52H10V48Z" fill="#64748B"/>
+        </svg>
+        <span>Roque Nublo</span>
       </div>
-
-      <div class="island-icons-strip">
-        <div class="island-badge"><span class="emoji-icon">🏖️</span><span>Las Canteras</span></div>
-        <div class="island-badge"><span class="emoji-icon">🌋</span><span>El Teide</span></div>
-        <div class="island-badge"><span class="emoji-icon">🪨</span><span>Roque Nublo</span></div>
-        <div class="island-badge"><span class="emoji-icon">🐬</span><span>Atlántico</span></div>
+      <div class="svg-badge">
+        <svg width="38" height="38" viewBox="0 0 64 64" fill="none">
+          <path d="M32 14C32 14 20 20 20 36C20 44 26 50 32 50C38 50 44 44 44 36C44 20 32 14 32 14Z" fill="#FCD34D"/>
+          <path d="M32 14V50" stroke="#B45309" stroke-width="2"/>
+        </svg>
+        <span>Plátano</span>
+      </div>
+      <div class="svg-badge">
+        <svg width="38" height="38" viewBox="0 0 64 64" fill="none">
+          <path d="M10 40C20 40 25 30 32 30C39 30 44 40 54 40" stroke="#0284C7" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="32" cy="18" r="8" fill="#F59E0B"/>
+        </svg>
+        <span>Costa</span>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="panel-clean">
-      <!-- 1. COMPANHIA -->
-      <div class="filter-section">
-        <span class="section-title">1. Com quem vais?</span>
-        <div class="pills-container" id="audience-pills">
-          <button class="pill active" data-audience="Todos">Todos</button>
-          <button class="pill" data-audience="Namorado">Namorado</button>
-          <button class="pill" data-audience="Amigos (Erasmus)">Amigos (Erasmus)</button>
-          <button class="pill" data-audience="Familia">Família</button>
+    <section class="controls-panel">
+      <div class="filter-row">
+        <div class="filter-group">
+          <span class="filter-label">1. Companhia</span>
+          <div class="pill-group" id="audience-pills">
+            <button class="pill active" data-audience="Todos">Todos</button>
+            <button class="pill" data-audience="Namorado">Namorado</button>
+            <button class="pill" data-audience="Amigos (Erasmus)">Amigos (Erasmus)</button>
+            <button class="pill" data-audience="Familia">Família</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">2. Período</span>
+          <div class="pill-group" id="time-pills">
+            <button class="pill active" data-time="Todos">Todos</button>
+            <button class="pill" data-time="Manha">Manhã</button>
+            <button class="pill" data-time="Tarde">Tarde</button>
+            <button class="pill" data-time="Noite">Noite</button>
+          </div>
+        </div>
+        
+        <div class="filter-group">
+          <span class="filter-label">3. Custo</span>
+          <div class="pill-group" id="price-pills">
+            <button class="pill active" data-price="Todos">Todos</button>
+            <button class="pill" data-price="Gratuito">Gratuito</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">4. Atalhos</span>
+          <div class="pill-group" id="preset-date-pills">
+            <button class="pill active" data-preset="all">Todas as Datas</button>
+            <button class="pill" data-preset="today">Hoje</button>
+            <button class="pill" data-preset="weekend">Este Fim de Semana</button>
+          </div>
         </div>
       </div>
 
-      <!-- 2. CLIMA & AMBIENTE -->
-      <div class="filter-section">
-        <span class="section-title">2. Clima e Tipo de Plano</span>
-        <div class="pills-container" id="weather-pills">
-          <button class="pill active" data-weather="Todos">Qualquer Plano</button>
-          <button class="pill" data-weather="Sol">☀️ Ao Ar Livre / Sol</button>
-          <button class="pill" data-weather="Lluvia">🌧️ Interior / Abrigado</button>
-        </div>
-      </div>
-
-      <!-- 3. HORARIO E CUSTO -->
-      <div class="filter-section">
-        <span class="section-title">3. Horário e Custo</span>
-        <div class="pills-container" id="secondary-pills">
-          <button class="pill active" data-type="time" data-val="Todos">Qualquer Hora</button>
-          <button class="pill" data-type="time" data-val="Manha">Manhã</button>
-          <button class="pill" data-type="time" data-val="Tarde">Tarde</button>
-          <button class="pill" data-type="time" data-val="Noite">Noite</button>
-          <span style="border-right: 1px solid var(--border-soft); margin: 0 4px;"></span>
-          <button class="pill active" data-type="price" data-val="Todos">Todos os Preços</button>
-          <button class="pill" data-type="price" data-val="Gratuito">Gratuito</button>
-        </div>
-      </div>
-
-      <!-- 4. DIAS & PREVISAO METEOROLOGICA -->
-      <div class="filter-section">
-        <span class="section-title">4. Calendário Rápido (Clica no dia para ver planos e tempo)</span>
+      <div class="filter-group">
+        <span class="filter-label">Barra Rápida de Dias (Clica num dia específico)</span>
         <div class="calendar-strip" id="calendar-strip"></div>
       </div>
 
-      <!-- 5. ISLA E PESQUISA -->
-      <div class="selectors-row">
-        <div>
-          <label class="section-title" style="display:block; margin-bottom:6px;">Ilha</label>
-          <select id="zone-select" class="input-field">
+      <div class="inputs-row">
+        <div class="filter-group">
+          <label class="filter-label" for="zone-select">Ilha</label>
+          <select id="zone-select" class="input-control">
             <option value="Todas">Todas as Ilhas</option>
             <option value="Gran Canaria">Gran Canaria</option>
             <option value="Tenerife">Tenerife</option>
@@ -606,48 +592,40 @@
           </select>
         </div>
 
-        <div>
-          <label class="section-title" style="display:block; margin-bottom:6px;">Data Específica</label>
-          <input type="date" id="exact-date" class="input-field" />
+        <div class="filter-group">
+          <label class="filter-label" for="exact-date">Data no Calendário</label>
+          <input type="date" id="exact-date" class="input-control" />
         </div>
 
-        <div>
-          <label class="section-title" style="display:block; margin-bottom:6px;">Pesquisar Atividade</label>
-          <input type="search" id="search-input" class="input-field" placeholder="Ex: praia, surf, concerto, museu..." />
+        <div class="filter-group">
+          <label class="filter-label" for="search-input">Pesquisa Livre</label>
+          <input type="search" id="search-input" class="input-control" placeholder="Ex: concerto, praia, museu..." />
         </div>
       </div>
     </section>
 
-    <!-- ESTADO DOS RESULTADOS -->
-    <div class="status-banner">
-      <span id="results-counter">A carregar atividades...</span>
+    <div class="status-bar">
+      <span id="results-counter">A carregar dados do Google Sheets...</span>
       <div style="display: flex; align-items: center; gap: 10px;">
         <span id="sync-status">Sincronizando...</span>
         <button class="btn-refresh" onclick="loadDataFromSheets()">🔄 Atualizar</button>
       </div>
     </div>
 
-    <!-- GRELHA -->
     <section class="events-grid" id="events-grid"></section>
   </main>
-
-  <footer>
-    <p>Canárias Spotter • Guia Independente das Ilhas Canárias</p>
-    <p style="margin-top: 4px; opacity: 0.75;">Atualização diária automática às 07:30</p>
-  </footer>
 
   <script>
     const SHEET_ID = "1lS_6wcQ7sZGBVnQ_4zzrlvUIvEK0gJBtGxGJcB-5GS0";
 
     let EVENTS_DATA = [];
-    let WEATHER_FORECAST = {};
 
     const state = {
       audience: "Todos",
-      weather: "Todos",
       time: "Todos",
       price: "Todos",
       zone: "Todas",
+      datePreset: "all",
       exactDate: "",
       search: ""
     };
@@ -671,25 +649,25 @@
       return arr;
     }
 
-    function mapSheetData(csvMatrix) {
-      if (csvMatrix.length < 2) return [];
-      const headers = csvMatrix[0].map(h => (h || '').trim().toLowerCase().replace(/^["']|["']$/g, ''));
+    function mapMatrixData(matrix) {
+      if (!matrix || matrix.length < 2) return [];
+      const headers = matrix[0].map(h => (h || '').toString().trim().toLowerCase().replace(/^["']|["']$/g, ''));
       const data = [];
 
-      for (let i = 1; i < csvMatrix.length; i++) {
-        const row = csvMatrix[i];
-        if (row.length < 2 || !row[0]) continue; 
+      for (let i = 1; i < matrix.length; i++) {
+        const row = matrix[i];
+        if (!row || row.length < 2) continue;
         
         const getCol = (possibleKeys) => {
           for (let key of possibleKeys) {
             const idx = headers.indexOf(key.toLowerCase());
-            if (idx !== -1 && row[idx]) {
-              return row[idx].trim().replace(/^["']|["']$/g, '');
+            if (idx !== -1 && row[idx] !== undefined && row[idx] !== null) {
+              return row[idx].toString().trim().replace(/^["']|["']\$/g, '');
             }
           }
           return "";
         };
-        
+
         const title = getCol(["Título", "Titulo", "Title", "Nome"]);
         if (!title) continue;
 
@@ -725,42 +703,76 @@
       }
     }
 
-    async function fetchWeather() {
-      try {
-        const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=28.12&longitude=-15.43&daily=temperature_2m_max,weathercode&current_weather=true&timezone=Atlantic%2FCanary");
-        const json = await res.json();
-        
-        if (json.current_weather) {
-          const temp = Math.round(json.current_weather.temperature);
-          document.getElementById("weather-chip").textContent = `☀️ Gran Canaria: ${temp}°C | Tenerife: ${temp + 1}°C`;
-        }
+    /* CARREGAMENTO ROBUSTO SEM PROBLEMAS DE CORS VIA GOOGLE JSONP + FALLBACKS */
+    function loadDataFromSheets() {
+      const statusEl = document.getElementById("sync-status");
+      const counterEl = document.getElementById("results-counter");
+      statusEl.textContent = "A sincronizar...";
 
-        if (json.daily && json.daily.time) {
-          json.daily.time.forEach((t, idx) => {
-            const code = json.daily.weathercode[idx];
-            let icon = "☀️";
-            if (code > 2 && code <= 48) icon = "⛅";
-            if (code > 48) icon = "🌧️";
-            WEATHER_FORECAST[t] = {
-              temp: Math.round(json.daily.temperature_2m_max[idx]),
-              icon: icon
-            };
-          });
+      let responded = false;
+      const timeoutId = setTimeout(() => {
+        if (!responded) {
+          fallbackFetch();
         }
-      } catch (e) {
-        document.getElementById("weather-chip").textContent = "☀️ Gran Canaria: 24°C | Tenerife: 25°C";
-      }
-      generateDayStrip();
+      }, 4000);
+
+      window.handleGoogleSheetData = function(gviz) {
+        responded = true;
+        clearTimeout(timeoutId);
+        try {
+          if (!gviz || !gviz.table) throw new Error("Estrutura inválida");
+          const table = gviz.table;
+          const matrix = [];
+          
+          const colLabels = (table.cols || []).map(c => (c && c.label ? c.label.trim() : ''));
+          const hasColLabels = colLabels.some(l => l !== '');
+
+          const rawRows = (table.rows || []).map(r => {
+            return (r.c || []).map(cell => {
+              if (!cell) return "";
+              return cell.f !== undefined && cell.f !== null ? cell.f : (cell.v !== undefined && cell.v !== null ? cell.v : "");
+            });
+          });
+
+          if (hasColLabels) {
+            matrix.push(colLabels);
+            rawRows.forEach(r => matrix.push(r));
+          } else if (rawRows.length > 0) {
+            rawRows.forEach(r => matrix.push(r));
+          }
+
+          EVENTS_DATA = mapMatrixData(matrix);
+          statusEl.textContent = "Ligado com sucesso ✅";
+          generateDayStrip();
+          renderEvents();
+        } catch (e) {
+          console.error("Erro ao processar JSONP:", e);
+          fallbackFetch();
+        }
+      };
+
+      const prevScript = document.getElementById("gviz-script-tag");
+      if (prevScript) prevScript.remove();
+
+      const script = document.createElement("script");
+      script.id = "gviz-script-tag";
+      script.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=responseHandler:handleGoogleSheetData&t=${Date.now()}`;
+      script.onerror = function() {
+        if (!responded) {
+          clearTimeout(timeoutId);
+          fallbackFetch();
+        }
+      };
+      document.body.appendChild(script);
     }
 
-    /* SISTEMA DE SINCRONIZAÇÃO RESILIENTE MULTI-ENDPOINT (SEM BLOQUEIOS CORS NEM CACHE) */
-    async function fetchCSVWithFallbacks() {
+    async function fallbackFetch() {
+      const statusEl = document.getElementById("sync-status");
+      const counterEl = document.getElementById("results-counter");
+
       const endpoints = [
-        // 1. Google Visualization API (Endpoint oficial da Google com CORS habilitado)
         `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&t=${Date.now()}`,
-        // 2. Export direto sem cache
         `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&t=${Date.now()}`,
-        // 3. Proxy CORS de redundância caso a rede local/móvel bloqueie
         `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&t=${Date.now()}`)}`
       ];
 
@@ -768,35 +780,21 @@
         try {
           const res = await fetch(url, { cache: "no-store" });
           if (res.ok) {
-            const text = await res.text();
-            if (text && text.length > 25 && !text.includes('<!DOCTYPE html>')) {
-              return text;
+            const csvText = await res.text();
+            if (csvText && csvText.length > 30 && !csvText.includes("<!DOCTYPE html>")) {
+              const matrix = parseCSV(csvText);
+              EVENTS_DATA = mapMatrixData(matrix);
+              statusEl.textContent = "Ligado com sucesso ✅";
+              generateDayStrip();
+              renderEvents();
+              return;
             }
           }
-        } catch (err) {
-          console.warn("Falha no endpoint:", url, err);
-        }
+        } catch (err) {}
       }
-      throw new Error("Não foi possível aceder à Google Sheet através de nenhum endpoint.");
-    }
 
-    async function loadDataFromSheets() {
-      const statusEl = document.getElementById("sync-status");
-      const counterEl = document.getElementById("results-counter");
-      statusEl.textContent = "A sincronizar...";
-
-      try {
-        const csvText = await fetchCSVWithFallbacks();
-        const csvMatrix = parseCSV(csvText);
-        EVENTS_DATA = mapSheetData(csvMatrix);
-        statusEl.textContent = "Sincronizado ✅";
-        generateDayStrip();
-        renderEvents();
-      } catch (error) {
-        console.error("Erro na sincronização:", error);
-        counterEl.textContent = "Erro ao ligar ao Google Sheets.";
-        statusEl.textContent = "Sem ligação ⚠️";
-      }
+      counterEl.textContent = "Erro ao carregar dados do Google Sheets.";
+      statusEl.textContent = "Falha na ligação ⚠️";
     }
 
     function generateDayStrip() {
@@ -810,23 +808,19 @@
         const d = new Date(today);
         d.setDate(today.getDate() + i);
         const isoDate = d.toISOString().split("T")[0];
-        const weatherInfo = WEATHER_FORECAST[isoDate] || { temp: 24, icon: "☀️" };
-        
         days.push({
           date: isoDate,
           label: ptDays[d.getDay()],
-          num: `${d.getDate()} ${ptMonths[d.getMonth()]}`,
-          temp: `${weatherInfo.icon} ${weatherInfo.temp}°`
+          num: `${d.getDate()} ${ptMonths[d.getMonth()]}`
         });
       }
 
       strip.innerHTML = days.map(day => {
-        const isActive = state.exactDate === day.date;
+        const isActive = state.exactDate === day.date || state.datePreset === day.date;
         return `
           <div class="day-chip ${isActive ? "active" : ""}" data-day="${day.date}">
-            <span class="d-name">${day.label}</span>
-            <span class="d-num">${day.num}</span>
-            <span class="d-temp">${day.temp}</span>
+            <span class="day-name">${day.label}</span>
+            <span class="day-num">${day.num}</span>
           </div>
         `;
       }).join("");
@@ -834,8 +828,10 @@
       strip.querySelectorAll(".day-chip").forEach(chip => {
         chip.addEventListener("click", () => {
           const chosen = chip.getAttribute("data-day");
-          state.exactDate = (state.exactDate === chosen) ? "" : chosen;
-          document.getElementById("exact-date").value = state.exactDate;
+          state.exactDate = chosen;
+          state.datePreset = chosen;
+          document.getElementById("exact-date").value = chosen;
+          document.querySelectorAll("#preset-date-pills .pill").forEach(b => b.classList.remove("active"));
           generateDayStrip();
           renderEvents();
         });
@@ -844,20 +840,42 @@
 
     function isFree(priceStr) {
       const p = (priceStr || "").toLowerCase();
-      return p.includes("gratis") || p.includes("gratuito") || p.includes("livre") || p === "0" || p === "0 eur" || p === "0€";
+      return p.includes("gratuito") || p.includes("gratis") || p.includes("livre") || p === "0" || p === "0 eur" || p === "0€";
     }
 
-    function classifyOutdoorIndoor(ev) {
-      const text = `${ev.title} ${ev.description} ${ev.venue}`.toLowerCase();
-      const outdoorKeywords = ["playa", "praia", "surf", "aire libre", "ar livre", "senderismo", "caminhada", "parque", "volcan", "vulcão", "ruta", "jardim", "plaza", "terraza", "esplanada", "mar", "oceano", "costa", "dunas"];
-      const indoorKeywords = ["museo", "museu", "teatro", "auditorio", "auditório", "cine", "cinema", "sala", "interior", "exposicion", "exposição", "concerto", "concierto", "palacio", "palácio", "biblioteca"];
+    function getWeekendDates() {
+      const today = new Date();
+      const dayOfWeek = today.getDay();
+      const sat = new Date(today);
+      const sun = new Date(today);
       
-      const isOutdoor = outdoorKeywords.some(kw => text.includes(kw));
-      const isIndoor = indoorKeywords.some(kw => text.includes(kw));
+      if (dayOfWeek === 6) {
+        sun.setDate(today.getDate() + 1);
+      } else if (dayOfWeek === 0) {
+        sat.setDate(today.getDate() - 1);
+      } else {
+        sat.setDate(today.getDate() + (6 - dayOfWeek));
+        sun.setDate(today.getDate() + (7 - dayOfWeek));
+      }
+      return [sat.toISOString().split("T")[0], sun.toISOString().split("T")[0]];
+    }
 
-      if (isOutdoor && !isIndoor) return "Sol";
-      if (isIndoor && !isOutdoor) return "Lluvia";
-      return "Mixto";
+    function matchesDate(event, currentState) {
+      if (currentState.exactDate) {
+        return event.start_date <= currentState.exactDate && currentState.exactDate <= event.end_date;
+      }
+      const preset = currentState.datePreset;
+      const todayStr = new Date().toISOString().split("T")[0];
+
+      if (preset === "all") return true;
+      if (preset === "today") {
+        return event.start_date <= todayStr && todayStr <= event.end_date;
+      }
+      if (preset === "weekend") {
+        const [satStr, sunStr] = getWeekendDates();
+        return !(event.end_date < satStr || event.start_date > sunStr);
+      }
+      return event.start_date <= preset && preset <= event.end_date;
     }
 
     function renderEvents() {
@@ -870,16 +888,8 @@
         if (state.time !== "Todos" && !ev.time_of_day.includes(state.time)) return false;
         if (state.zone !== "Todas" && ev.zone !== state.zone) return false;
         if (state.price === "Gratuito" && !isFree(ev.price)) return false;
-
-        if (state.weather !== "Todos") {
-          const evEnv = classifyOutdoorIndoor(ev);
-          if (state.weather === "Sol" && evEnv === "Lluvia") return false;
-          if (state.weather === "Lluvia" && evEnv === "Sol") return false;
-        }
         
-        if (state.exactDate) {
-          if (!(ev.start_date <= state.exactDate && state.exactDate <= ev.end_date)) return false;
-        }
+        if (!matchesDate(ev, state)) return false;
         
         if (query) {
           const haystack = `${ev.title} ${ev.description} ${ev.venue} ${ev.zone} ${ev.municipality}`.toLowerCase();
@@ -894,52 +904,52 @@
         grid.innerHTML = `
           <div class="empty-state">
             <h3>Nenhuma atividade encontrada</h3>
-            <p>Tenta mudar os filtros ou selecionar outro dia no calendário.</p>
+            <p>Tenta limpar os filtros ou selecionar "Todas as Datas".</p>
           </div>
         `;
         return;
       }
 
       grid.innerHTML = filtered.map(ev => {
-        const dateLabel = ev.start_date === ev.end_date ? ev.start_date : `${ev.start_date} a ${ev.end_date}`;
-        const isFreePrice = isFree(ev.price);
-        const cleanUrl = (ev.url || "").replace(/'/g, "\\'");
+        const dateLabel = ev.start_date === ev.end_date
+          ? ev.start_date
+          : `${ev.start_date} a ${ev.end_date}`;
 
         const audienceBadges = ev.audience.map(a => {
-          let c = "erasmus";
-          if (a.includes("Namorado")) c = "namorado";
-          if (a.includes("Familia")) c = "familia";
-          return `<span class="badge-pill ${c}">${a}</span>`;
+          let c = a.includes("Erasmus") ? "Amigos" : (a.includes("Namorado") ? "Namorado" : a);
+          return `<span class="badge-aud ${c}">${a}</span>`;
         }).join("");
-
-        const timeBadges = ev.time_of_day.map(t => `<span class="badge-pill time">${t}</span>`).join("");
+        
+        const timeBadges = ev.time_of_day.map(t => `<span class="badge-time">${t}</span>`).join("");
+        const isFreePrice = isFree(ev.price);
+        const cleanUrl = (ev.url || "").replace(/'/g, "\\'");
 
         return `
           <article class="event-card">
             <div>
-              <div class="card-topbar">
-                <span class="island-tag">${ev.zone}</span>
-                <span class="cost-tag ${isFreePrice ? 'free' : ''}">${ev.price || 'N/A'}</span>
+              <div class="card-top">
+                <span class="zone-tag">${ev.zone}</span>
+                <span class="price-tag ${isFreePrice ? 'free' : ''}">${ev.price || 'N/A'}</span>
               </div>
               <h2 class="event-title">${ev.title}</h2>
               <p class="event-desc">${ev.description}</p>
             </div>
 
             <div>
-              <div class="card-info-box">
+              <div class="meta-list">
                 <div><strong>Local:</strong> ${ev.venue} (${ev.municipality})</div>
                 <div><strong>Data:</strong> ${dateLabel}</div>
                 <div><strong>Horário:</strong> ${ev.schedule_details}</div>
               </div>
 
-              <div class="badges-flex">
+              <div class="tags-row" style="margin-top: 10px;">
                 ${audienceBadges}
                 ${timeBadges}
               </div>
 
-              <div class="card-bottom">
+              <div class="card-footer" style="margin-top: 12px;">
                 <span>Fonte: ${ev.source_name}</span>
-                ${ev.url ? `<button type="button" class="btn-official-touch" onclick="openExternalUrl('${cleanUrl}')">Ver Oficial &rarr;</button>` : ''}
+                ${ev.url ? `<button type="button" class="btn-official-touch" onclick="openExternalUrl('\${cleanUrl}')">Ver Oficial &rarr;</button>` : ''}
               </div>
             </div>
           </article>
@@ -947,40 +957,25 @@
       }).join("");
     }
 
-    // AUDIENCE LISTENER
-    document.querySelectorAll("#audience-pills .pill").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll("#audience-pills .pill").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".pill-group .pill").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const parent = btn.parentElement;
+        parent.querySelectorAll(".pill").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-        state.audience = btn.getAttribute("data-audience");
+
+        if (parent.id === "audience-pills") state.audience = btn.getAttribute("data-audience");
+        if (parent.id === "time-pills") state.time = btn.getAttribute("data-time");
+        if (parent.id === "price-pills") state.price = btn.getAttribute("data-price");
+        if (parent.id === "preset-date-pills") {
+          state.datePreset = btn.getAttribute("data-preset");
+          state.exactDate = "";
+          document.getElementById("exact-date").value = "";
+          generateDayStrip();
+        }
         renderEvents();
       });
     });
 
-    // WEATHER LISTENER
-    document.querySelectorAll("#weather-pills .pill").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll("#weather-pills .pill").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        state.weather = btn.getAttribute("data-weather");
-        renderEvents();
-      });
-    });
-
-    // TIME & PRICE LISTENER
-    document.querySelectorAll("#secondary-pills .pill").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const type = btn.getAttribute("data-type");
-        const val = btn.getAttribute("data-val");
-        document.querySelectorAll(`#secondary-pills .pill[data-type="${type}"]`).forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        if (type === "time") state.time = val;
-        if (type === "price") state.price = val;
-        renderEvents();
-      });
-    });
-
-    // INPUTS
     document.getElementById("zone-select").addEventListener("change", e => {
       state.zone = e.target.value;
       renderEvents();
@@ -988,6 +983,7 @@
 
     document.getElementById("exact-date").addEventListener("change", e => {
       state.exactDate = e.target.value;
+      document.querySelectorAll("#preset-date-pills .pill").forEach(b => b.classList.remove("active"));
       generateDayStrip();
       renderEvents();
     });
@@ -997,8 +993,7 @@
       renderEvents();
     });
 
-    // INICIALIZACAO
-    fetchWeather();
+    generateDayStrip();
     loadDataFromSheets();
   </script>
 </body>
