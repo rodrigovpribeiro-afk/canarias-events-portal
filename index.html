@@ -447,7 +447,7 @@
       gap: 8px;
     }
 
-    /* BOTAO DE HIPERLIGACAO NATIVO (100% COMPATIVEL COM TELEMOVEIS E DESKTOP) */
+    /* BOTAO DE HIPERLIGACAO NATIVO (DIRETO E TOTALMENTE DESBLOQUEADO) */
     a.btn-official-touch {
       display: inline-flex;
       align-items: center;
@@ -458,9 +458,7 @@
       color: #FFFFFF !important;
       font-size: 0.82rem;
       font-weight: 700;
-      border: none;
       border-radius: 10px;
-      cursor: pointer;
       text-decoration: none;
       touch-action: manipulation;
       transition: background-color 0.15s ease, transform 0.1s ease;
@@ -655,7 +653,7 @@
 
     function mapMatrixData(matrix) {
       if (!matrix || matrix.length < 2) return [];
-      const headers = matrix[0].map(h => (h || '').toString().trim().toLowerCase().replace(/^["']|["']$/g, ''));
+      const headers = matrix[0].map(h => (h || '').toString().trim().toLowerCase().replace(/^["']|["']\$/g, ''));
       const data = [];
 
       for (let i = 1; i < matrix.length; i++) {
@@ -666,7 +664,7 @@
           for (let key of possibleKeys) {
             const idx = headers.indexOf(key.toLowerCase());
             if (idx !== -1 && row[idx] !== undefined && row[idx] !== null) {
-              return row[idx].toString().trim().replace(/^["']|["']\$/g, '');
+              return row[idx].toString().trim();
             }
           }
           return "";
@@ -695,22 +693,23 @@
       return data;
     }
 
-    /* FUNCAO BLINDADA QUE ELIMINA ASPAS E GARANTE URL ABSOLUTO */
-    function sanitizeUrl(rawUrl) {
+    /* FUNCAO QUE LIMPA O URL SEM USAR REGEX PERIGOSOS */
+    function getCleanUrl(rawUrl) {
       if (!rawUrl) return '';
-      let url = String(rawUrl).trim();
-      // Remove aspas, apóstrofos e barras invertidas acidentais do CSV
-      url = url.replace(/^["'“”‘’\s\\]+|["'“”‘’\s\\]+\$/g, '');
-      url = url.replace(/["']/g, '').trim();
-      if (!url) return '';
-      // Garante que é um URL absoluto para sair da Vercel
-      if (!/^https?:\/\//i.test(url)) {
-        url = 'https://' + url;
+      let str = String(rawUrl).trim();
+      while (str.startsWith('"') || str.startsWith("'")) {
+        str = str.substring(1).trim();
       }
-      return url;
+      while (str.endsWith('"') || str.endsWith("'")) {
+        str = str.substring(0, str.length - 1).trim();
+      }
+      if (!str) return '';
+      if (!str.startsWith('http://') && !str.startsWith('https://')) {
+        str = 'https://' + str;
+      }
+      return str;
     }
 
-    /* CARREGAMENTO ROBUSTO SEM PROBLEMAS DE CORS VIA GOOGLE JSONP + FALLBACKS */
     function loadDataFromSheets() {
       const statusEl = document.getElementById("sync-status");
       const counterEl = document.getElementById("results-counter");
@@ -929,7 +928,7 @@
         
         const timeBadges = ev.time_of_day.map(t => `<span class="badge-time">${t}</span>`).join("");
         const isFreePrice = isFree(ev.price);
-        const finalUrl = sanitizeUrl(ev.url);
+        const finalUrl = getCleanUrl(ev.url);
 
         return `
           <article class="event-card">
