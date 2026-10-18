@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-PT">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Agenda Canarias: Gran Canaria &amp; Tenerife</title>
+  <title>Canárias Spotter: Gran Canaria, Tenerife &amp; Ilhas</title>
   <style>
     :root {
-      --sand-bg: #F8F6F0;
-      --card-bg: #FFFFFF;
-      --basalt-dark: #18181B;
-      --basalt-card: #27272A;
-      --atlantic-blue: #0284C7;
-      --atlantic-soft: #E0F2FE;
-      --dune-gold: #D97706;
-      --dune-soft: #FEF3C7;
-      --palm-emerald: #059669;
+      --ocean-blue: #0284C7;
+      --ocean-deep: #0369A1;
+      --ocean-soft: #E0F2FE;
+      --ocean-surface: #F0F9FF;
+      --sun-yellow: #FBBF24;
+      --sun-gold: #D97706;
+      --sun-soft: #FEF3C7;
+      --card-white: #FFFFFF;
+      --bg-cream: #FAF9F6;
+      --palm-green: #10B981;
       --palm-soft: #D1FAE5;
-      --ink-primary: #1C1917;
-      --ink-muted: #71717A;
-      --border-line: #E4E4E7;
-      --shadow-sm: 0 4px 12px rgba(24, 24, 27, 0.05);
-      --shadow-lg: 0 12px 30px rgba(24, 24, 27, 0.08);
+      --ink-black: #0F172A;
+      --ink-muted: #64748B;
+      --border-soft: #E2E8F0;
+      --shadow-clean: 0 4px 20px -2px rgba(2, 132, 199, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+      --shadow-hover: 0 12px 28px -4px rgba(2, 132, 199, 0.14);
     }
 
     * {
@@ -34,187 +35,187 @@
       width: 100%;
       max-width: 100%;
       overflow-x: hidden;
-      background-color: var(--sand-bg);
-      color: var(--ink-primary);
+      background-color: var(--bg-cream);
+      color: var(--ink-black);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
-    /* HERO SECTION COM FOTOGRAFIA DAS CANARIAS */
-    .hero-container {
+    /* TOPO MINIMALISTA & LUMINOSO COM MAR DAS CANARIAS */
+    .hero-canarias {
       position: relative;
       width: 100%;
-      min-height: 320px;
-      background: linear-gradient(180deg, rgba(24, 24, 27, 0.45) 0%, rgba(24, 24, 27, 0.85) 100%),
-                  url("https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 24px 20px 28px;
+      background: linear-gradient(180deg, rgba(2, 132, 199, 0.72) 0%, rgba(3, 105, 161, 0.88) 100%),
+                  url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
       color: #FFFFFF;
+      padding: 28px 20px 32px;
+      border-bottom: 5px solid var(--sun-yellow);
     }
 
-    .hero-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
+    .hero-inner {
       max-width: 1200px;
-      width: 100%;
       margin: 0 auto;
-    }
-
-    .signature-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: #FFFFFF;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 6px 14px;
-      border-radius: 999px;
-      letter-spacing: 0.03em;
-    }
-
-    .live-weather-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(2, 132, 199, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #FFFFFF;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 6px 14px;
-      border-radius: 999px;
-    }
-
-    .hero-main {
-      max-width: 1200px;
-      width: 100%;
-      margin: 20px auto 0;
-    }
-
-    .hero-main h1 {
-      font-size: 2.4rem;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 6px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .hero-main p {
-      font-size: 0.98rem;
-      color: rgba(255, 255, 255, 0.9);
-      max-width: 600px;
-      line-height: 1.4;
-    }
-
-    .badges-island-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      max-width: 1200px;
-      width: 100%;
-      margin: 18px auto 0;
-    }
-
-    .icon-card {
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 12px;
-      padding: 8px 6px;
-      text-align: center;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #FFFFFF;
-    }
-
-    .icon-card span {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 2px;
-    }
-
-    /* CONTEUDO PRINCIPAL */
-    main {
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 20px 16px 40px;
-    }
-
-    .panel-box {
-      background: var(--card-bg);
-      border: 1px solid var(--border-line);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 24px;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
-    .filter-group {
+    .hero-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .love-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #FFFFFF;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+
+    .weather-live-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      color: var(--ocean-deep);
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .hero-headline {
+      margin-top: 4px;
+    }
+
+    .hero-headline h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 10px rgba(2, 132, 199, 0.3);
+    }
+
+    .hero-headline p {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.95);
+      max-width: 650px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* BADGES CRIATIVOS DAS ILHAS */
+    .island-icons-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .island-badge {
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 14px;
+      padding: 10px 8px;
+      text-align: center;
+      color: #FFFFFF;
+      font-size: 0.74rem;
+      font-weight: 800;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .island-badge .emoji-icon {
+      font-size: 1.35rem;
+    }
+
+    /* PAINEL DE FILTROS */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 22px 16px 50px;
+    }
+
+    .panel-clean {
+      background: var(--card-white);
+      border: 1px solid var(--border-soft);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow-clean);
+      margin-bottom: 24px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .filter-section {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
 
-    .group-title {
-      font-size: 0.75rem;
+    .section-title {
+      font-size: 0.76rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       color: var(--ink-muted);
     }
 
-    .pill-group {
+    .pills-container {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
     button.pill {
-      border: 1px solid var(--border-line);
-      background: var(--sand-bg);
-      color: var(--ink-primary);
-      padding: 8px 13px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-cream);
+      color: var(--ink-black);
+      padding: 9px 15px;
       border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.15s ease;
       white-space: nowrap;
     }
 
     button.pill:hover {
-      border-color: var(--atlantic-blue);
+      border-color: var(--ocean-blue);
     }
 
     button.pill.active {
-      background: var(--basalt-dark);
+      background: var(--ocean-blue);
       color: #FFFFFF;
-      border-color: var(--basalt-dark);
-    }
-
-    button.pill[data-audience="Amigos (Erasmus)"].active {
-      background: var(--dune-gold);
-      border-color: var(--dune-gold);
+      border-color: var(--ocean-blue);
     }
 
     button.pill[data-audience="Namorado"].active {
-      background: #BE123C;
-      border-color: #BE123C;
+      background: #E11D48;
+      border-color: #E11D48;
+    }
+
+    button.pill[data-audience="Amigos (Erasmus)"].active {
+      background: var(--sun-gold);
+      border-color: var(--sun-gold);
     }
 
     button.pill[data-weather="Sol"].active {
@@ -226,21 +227,19 @@
     button.pill[data-weather="Lluvia"].active {
       background: #0284C7;
       border-color: #0284C7;
-      color: #FFFFFF;
     }
 
     button.pill[data-price="Gratuito"].active {
-      background: var(--palm-emerald);
-      border-color: var(--palm-emerald);
+      background: var(--palm-green);
+      border-color: var(--palm-green);
     }
 
-    /* BARRA HORIZONTAL DE DIAS */
+    /* BARRA HORIZONTAL DE DIAS & CLIMA */
     .calendar-strip {
       display: flex;
       gap: 8px;
       overflow-x: auto;
       padding-bottom: 6px;
-      width: 100%;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
     }
@@ -250,11 +249,11 @@
     }
 
     .day-chip {
-      min-width: 74px;
-      padding: 8px 8px;
+      min-width: 76px;
+      padding: 9px 8px;
       border-radius: 14px;
-      border: 1px solid var(--border-line);
-      background: var(--sand-bg);
+      border: 1px solid var(--border-soft);
+      background: var(--bg-cream);
       text-align: center;
       cursor: pointer;
       transition: all 0.15s ease;
@@ -265,70 +264,73 @@
     }
 
     .day-chip.active {
-      background: var(--atlantic-soft);
-      border-color: var(--atlantic-blue);
+      background: var(--sun-soft);
+      border-color: var(--sun-yellow);
     }
 
     .day-chip .d-name {
       font-size: 0.68rem;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--ink-muted);
     }
 
     .day-chip .d-num {
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       font-weight: 800;
-      color: var(--ink-primary);
+      color: var(--ink-black);
     }
 
-    .day-chip .d-weather {
+    .day-chip .d-temp {
       font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--atlantic-blue);
+      font-weight: 700;
+      color: var(--ocean-deep);
     }
 
-    /* INPUTS PESQUISA E ZONA */
-    .inputs-grid {
+    /* FORMULARIOS DE PESQUISA */
+    .selectors-row {
       display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
       padding-top: 10px;
-      border-top: 1px solid var(--border-line);
+      border-top: 1px solid var(--border-soft);
     }
 
     @media (min-width: 768px) {
-      .inputs-grid {
+      .selectors-row {
         grid-template-columns: 1.2fr 1fr 1.5fr;
       }
     }
 
-    .input-control {
+    .input-field {
       width: 100%;
       padding: 10px 14px;
-      border: 1px solid var(--border-line);
+      border: 1px solid var(--border-soft);
       border-radius: 12px;
       font-size: 0.92rem;
-      background: var(--sand-bg);
-      color: var(--ink-primary);
+      background: var(--bg-cream);
+      color: var(--ink-black);
+      font-weight: 500;
     }
 
-    /* ESTADO DOS RESULTADOS */
-    .status-line {
+    /* BARRA DE CONTAGEM */
+    .status-banner {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 16px;
       color: var(--ink-muted);
-      font-size: 0.88rem;
-      font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 700;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
-    /* GRELHA DE ATIVIDADES */
+    /* CARTOES DE ATIVIDADES */
     .events-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 18px;
       width: 100%;
     }
 
@@ -340,224 +342,242 @@
     }
 
     .event-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-line);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: var(--shadow-sm);
+      background: var(--card-white);
+      border: 1px solid var(--border-soft);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow-clean);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 14px;
-      border-top: 4px solid var(--dune-gold);
+      border-top: 5px solid var(--ocean-blue);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .card-head {
+    .card-topbar {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       gap: 8px;
     }
 
-    .tag-island {
-      font-size: 0.72rem;
+    .island-tag {
+      font-size: 0.74rem;
       font-weight: 800;
-      padding: 3px 9px;
+      padding: 4px 10px;
       border-radius: 999px;
-      background: var(--basalt-dark);
-      color: #FFFFFF;
+      background: var(--ocean-soft);
+      color: var(--ocean-deep);
     }
 
-    .tag-cost {
-      font-size: 0.75rem;
+    .cost-tag {
+      font-size: 0.76rem;
       font-weight: 800;
-      padding: 3px 9px;
+      padding: 4px 10px;
       border-radius: 999px;
-      background: var(--atlantic-soft);
-      color: var(--atlantic-blue);
+      background: var(--sun-soft);
+      color: #92400E;
     }
 
-    .tag-cost.free {
+    .cost-tag.free {
       background: var(--palm-soft);
-      color: var(--palm-emerald);
+      color: var(--palm-green);
     }
 
     .event-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--ink-primary);
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--ink-black);
       margin-top: 6px;
       line-height: 1.25;
+      letter-spacing: -0.01em;
     }
 
     .event-desc {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--ink-muted);
-      margin-top: 4px;
+      margin-top: 5px;
+      line-height: 1.45;
     }
 
-    .details-box {
-      font-size: 0.82rem;
-      color: var(--ink-primary);
+    .card-info-box {
+      font-size: 0.84rem;
+      color: var(--ink-black);
       display: grid;
       gap: 4px;
-      background: var(--sand-bg);
-      padding: 10px 12px;
+      background: var(--bg-cream);
+      padding: 11px 13px;
       border-radius: 12px;
-      border: 1px solid var(--border-line);
+      border: 1px solid var(--border-soft);
     }
 
-    .badge-row {
+    .badges-flex {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       margin-top: 10px;
     }
 
-    .badge-item {
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 3px 8px;
+    .badge-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
       border-radius: 6px;
     }
 
-    .badge-item.erasmus {
-      background: var(--dune-soft);
-      color: #92400E;
-    }
-
-    .badge-item.namorado {
+    .badge-pill.namorado {
       background: #FFE4E6;
-      color: #BE123C;
+      color: #E11D48;
     }
 
-    .badge-item.familia {
+    .badge-pill.erasmus {
+      background: var(--sun-soft);
+      color: #B45309;
+    }
+
+    .badge-pill.familia {
       background: var(--palm-soft);
-      color: var(--palm-emerald);
+      color: var(--palm-green);
     }
 
-    .badge-item.schedule {
-      background: #F4F4F5;
+    .badge-pill.time {
+      background: #F1F5F9;
       color: var(--ink-muted);
     }
 
-    .card-footer {
+    .card-bottom {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 10px;
-      border-top: 1px solid var(--border-line);
-      font-size: 0.78rem;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 0.82rem;
+      gap: 8px;
     }
 
-    .link-official {
-      color: var(--atlantic-blue);
-      font-weight: 700;
+    /* BOTAO TACTIL REFORCADO */
+    .btn-official-touch {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 9px 18px;
+      background-color: var(--ocean-blue);
+      color: #FFFFFF !important;
+      font-size: 0.84rem;
+      font-weight: 800;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
       text-decoration: none;
+      -webkit-appearance: none;
+      touch-action: manipulation;
+      transition: background-color 0.15s ease, transform 0.1s ease;
     }
 
-    .link-official:hover {
-      text-decoration: underline;
+    .btn-official-touch:active {
+      transform: scale(0.96);
+      background-color: var(--ocean-deep);
     }
 
     .empty-state {
       text-align: center;
-      padding: 40px 16px;
-      background: var(--card-bg);
-      border-radius: 18px;
-      border: 1px dashed var(--border-line);
+      padding: 44px 16px;
+      background: var(--card-white);
+      border-radius: 20px;
+      border: 1px dashed var(--border-soft);
       color: var(--ink-muted);
     }
 
     footer {
       text-align: center;
-      padding: 24px 16px;
+      padding: 28px 16px;
       color: var(--ink-muted);
-      font-size: 0.8rem;
-      border-top: 1px solid var(--border-line);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--border-soft);
     }
 
-    @media (max-width: 500px) {
-      .hero-main h1 {
-        font-size: 1.85rem;
-      }
-      .panel-box {
-        padding: 16px;
-      }
+    @media (max-width: 640px) {
+      .hero-headline h1 { font-size: 2.1rem; }
+      .panel-clean { padding: 16px; }
+      .event-card { padding: 16px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO SECTION DAS CANARIAS -->
-  <header class="hero-container">
-    <div class="hero-top">
-      <div class="signature-badge">Curaduría por Rodrigo Ribeiro para Ema</div>
-      <div class="live-weather-pill" id="hero-weather-pill">☀️ Gran Canaria: 24°C | Tenerife: 25°C</div>
-    </div>
+  <!-- HERO HEADER DAS ILHAS CANÁRIAS -->
+  <header class="hero-canarias">
+    <div class="hero-inner">
+      <div class="hero-topline">
+        <div class="love-badge">Curadoria do Rodrigo para a Ema &hearts;</div>
+        <div class="weather-live-chip" id="weather-chip">☀️ A carregar tempo nas ilhas...</div>
+      </div>
 
-    <div class="hero-main">
-      <h1>Agenda Canarias</h1>
-      <p>Cultura, ocio, vida universitaria y planes de fin de semana en Gran Canaria y Tenerife.</p>
-    </div>
+      <div class="hero-headline">
+        <h1>Canárias Spotter</h1>
+        <p>A tua agenda diária de cultura, praia, concertos, vida universitária e escapadinhas em Gran Canaria, Tenerife e ilhas vizinhas.</p>
+      </div>
 
-    <div class="badges-island-row">
-      <div class="icon-card"><span>🌋</span>El Teide</div>
-      <div class="icon-card"><span>🪨</span>Roque Nublo</div>
-      <div class="icon-card"><span>🍌</span>Plátano</div>
-      <div class="icon-card"><span>🌊</span>Atlántico</div>
+      <div class="island-icons-strip">
+        <div class="island-badge"><span class="emoji-icon">🏖️</span><span>Las Canteras</span></div>
+        <div class="island-badge"><span class="emoji-icon">🌋</span><span>El Teide</span></div>
+        <div class="island-badge"><span class="emoji-icon">🪨</span><span>Roque Nublo</span></div>
+        <div class="island-badge"><span class="emoji-icon">🐬</span><span>Atlántico</span></div>
+      </div>
     </div>
   </header>
 
   <main>
-    <section class="panel-box">
+    <section class="panel-clean">
       <!-- 1. COMPANHIA -->
-      <div class="filter-group">
-        <span class="group-title">1. ¿Con quién vas?</span>
-        <div class="pill-group" id="audience-pills">
+      <div class="filter-section">
+        <span class="section-title">1. Com quem vais?</span>
+        <div class="pills-container" id="audience-pills">
           <button class="pill active" data-audience="Todos">Todos</button>
-          <button class="pill" data-audience="Amigos (Erasmus)">Amigos (Erasmus)</button>
           <button class="pill" data-audience="Namorado">Namorado</button>
-          <button class="pill" data-audience="Familia">Familia</button>
+          <button class="pill" data-audience="Amigos (Erasmus)">Amigos (Erasmus)</button>
+          <button class="pill" data-audience="Familia">Família</button>
         </div>
       </div>
 
-      <!-- 2. CLIMA / AMBIENTE -->
-      <div class="filter-group">
-        <span class="group-title">2. Clima y Entorno</span>
-        <div class="pill-group" id="weather-pills">
-          <button class="pill active" data-weather="Todos">Cualquier Plan</button>
-          <button class="pill" data-weather="Sol">☀️ Al Aire Libre / Sol</button>
-          <button class="pill" data-weather="Lluvia">🌧️ A Cubierto / Interior</button>
+      <!-- 2. CLIMA & AMBIENTE -->
+      <div class="filter-section">
+        <span class="section-title">2. Clima e Tipo de Plano</span>
+        <div class="pills-container" id="weather-pills">
+          <button class="pill active" data-weather="Todos">Qualquer Plano</button>
+          <button class="pill" data-weather="Sol">☀️ Ao Ar Livre / Sol</button>
+          <button class="pill" data-weather="Lluvia">🌧️ Interior / Abrigado</button>
         </div>
       </div>
 
-      <!-- 3. HORARIO E PREÇO -->
-      <div class="filter-group">
-        <span class="group-title">3. Horario y Coste</span>
-        <div class="pill-group" id="secondary-pills">
-          <button class="pill active" data-type="time" data-val="Todos">Todo el Día</button>
-          <button class="pill" data-type="time" data-val="Manha">Mañana</button>
+      <!-- 3. HORARIO E CUSTO -->
+      <div class="filter-section">
+        <span class="section-title">3. Horário e Custo</span>
+        <div class="pills-container" id="secondary-pills">
+          <button class="pill active" data-type="time" data-val="Todos">Qualquer Hora</button>
+          <button class="pill" data-type="time" data-val="Manha">Manhã</button>
           <button class="pill" data-type="time" data-val="Tarde">Tarde</button>
-          <button class="pill" data-type="time" data-val="Noite">Noche</button>
-          <span style="border-right: 1px solid var(--border-line); margin: 0 4px;"></span>
-          <button class="pill active" data-type="price" data-val="Todos">Cualquier Precio</button>
-          <button class="pill" data-type="price" data-val="Gratuito">Gratis</button>
+          <button class="pill" data-type="time" data-val="Noite">Noite</button>
+          <span style="border-right: 1px solid var(--border-soft); margin: 0 4px;"></span>
+          <button class="pill active" data-type="price" data-val="Todos">Todos os Preços</button>
+          <button class="pill" data-type="price" data-val="Gratuito">Gratuito</button>
         </div>
       </div>
 
-      <!-- 4. BARRA DE DIAS -->
-      <div class="filter-group">
-        <span class="group-title">4. Días (Selecciona fecha y consulta el clima)</span>
+      <!-- 4. DIAS & PREVISAO METEOROLOGICA -->
+      <div class="filter-section">
+        <span class="section-title">4. Calendário Rápido (Clica no dia para ver planos e tempo)</span>
         <div class="calendar-strip" id="calendar-strip"></div>
       </div>
 
-      <!-- 5. SELETORES E PESQUISA -->
-      <div class="inputs-grid">
+      <!-- 5. ISLA E PESQUISA -->
+      <div class="selectors-row">
         <div>
-          <label class="group-title" style="display:block; margin-bottom:6px;">Isla</label>
-          <select id="zone-select" class="input-control">
-            <option value="Todas">Todas las Islas</option>
+          <label class="section-title" style="display:block; margin-bottom:6px;">Ilha</label>
+          <select id="zone-select" class="input-field">
+            <option value="Todas">Todas as Ilhas</option>
             <option value="Gran Canaria">Gran Canaria</option>
             <option value="Tenerife">Tenerife</option>
             <option value="Fuerteventura">Fuerteventura</option>
@@ -570,36 +590,37 @@
         </div>
 
         <div>
-          <label class="group-title" style="display:block; margin-bottom:6px;">Calendario</label>
-          <input type="date" id="exact-date" class="input-control" />
+          <label class="section-title" style="display:block; margin-bottom:6px;">Data Específica</label>
+          <input type="date" id="exact-date" class="input-field" />
         </div>
 
         <div>
-          <label class="group-title" style="display:block; margin-bottom:6px;">Buscar actividad</label>
-          <input type="search" id="search-input" class="input-control" placeholder="Ej: Las Canteras, concierto, surf..." />
+          <label class="section-title" style="display:block; margin-bottom:6px;">Pesquisar Atividade</label>
+          <input type="search" id="search-input" class="input-field" placeholder="Ex: praia, surf, concerto, museu..." />
         </div>
       </div>
     </section>
 
-    <!-- RESULTADOS -->
-    <div class="status-line">
-      <span id="results-counter">Cargando eventos...</span>
-      <span id="sync-status">Sincronizando</span>
+    <!-- ESTADO DOS RESULTADOS -->
+    <div class="status-banner">
+      <span id="results-counter">A carregar atividades...</span>
+      <span id="sync-status">Sincronizando...</span>
     </div>
 
+    <!-- GRELHA -->
     <section class="events-grid" id="events-grid"></section>
   </main>
 
   <footer>
-    <p>Desarrollado y automatizado por Rodrigo Ribeiro para Ema ❤️</p>
-    <p style="margin-top: 4px; opacity: 0.75;">Actualización diaria a las 07:30</p>
+    <p>Criado e automatizado com carinho por Rodrigo Ribeiro para a Ema &hearts;</p>
+    <p style="margin-top: 4px; opacity: 0.75;">Atualização diária automática às 07:30</p>
   </footer>
 
   <script>
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1lS_6wcQ7sZGBVnQ_4zzrlvUIvEK0gJBtGxGJcB-5GS0/export?format=csv";
 
     let EVENTS_DATA = [];
-    let WEATHER_FORECAST = {}; // key: YYYY-MM-DD -> { temp: 24, icon: "☀️" }
+    let WEATHER_FORECAST = {};
 
     const state = {
       audience: "Todos",
@@ -622,9 +643,13 @@
         if (cc === '"' && quote && nc === '"') { arr[row][col] += cc; ++c; continue; }
         if (cc === '"') { quote = !quote; continue; }
         if (cc === ',' && !quote) { ++col; continue; }
-        if (cc === '\r' && nc === '\n' && !quote) { ++row; col = 0; ++c; continue; }
-        if (cc === '\n' && !quote) { ++row; col = 0; continue; }
-        if (cc === '\r' && !quote) { ++row; col = 0; continue; }
+        if (cc === '
+' && nc === '
+' && !quote) { ++row; col = 0; ++c; continue; }
+        if (cc === '
+' && !quote) { ++row; col = 0; continue; }
+        if (cc === '
+' && !quote) { ++row; col = 0; continue; }
         arr[row][col] += cc;
       }
       return arr;
@@ -632,46 +657,62 @@
 
     function mapSheetData(csvMatrix) {
       if (csvMatrix.length < 2) return [];
-      const headers = csvMatrix[0].map(h => h.trim());
+      const headers = csvMatrix[0].map(h => h.trim().toLowerCase());
       const data = [];
+
       for (let i = 1; i < csvMatrix.length; i++) {
         const row = csvMatrix[i];
         if (row.length < 2 || !row[0]) continue; 
         
-        const getCol = (name) => {
-          const idx = headers.indexOf(name);
-          return idx !== -1 && row[idx] ? row[idx].trim() : "";
+        const getCol = (possibleKeys) => {
+          for (let key of possibleKeys) {
+            const idx = headers.indexOf(key.toLowerCase());
+            if (idx !== -1 && row[idx]) return row[idx].trim();
+          }
+          return "";
         };
         
         data.push({
-          id: getCol("ID"),
-          title: getCol("Título"),
-          description: getCol("Descrição"),
-          venue: getCol("Local"),
-          zone: getCol("Isla"),
-          municipality: getCol("Município"),
-          start_date: getCol("Data Início"),
-          end_date: getCol("Data Fim"),
-          time_of_day: getCol("Altura do Dia").split(",").map(s => s.trim()).filter(Boolean),
-          schedule_details: getCol("Horário"),
-          audience: getCol("Companhia").split(",").map(s => s.trim()).filter(Boolean),
-          price: getCol("Preço"),
-          source_name: getCol("Fonte"),
-          url: getCol("URL")
+          id: getCol(["ID"]),
+          title: getCol(["Título", "Titulo", "Title", "Nome"]),
+          description: getCol(["Descrição", "Descricao", "Description"]),
+          venue: getCol(["Local", "Lugar", "Venue"]),
+          zone: getCol(["Isla", "Zona", "Zone"]),
+          municipality: getCol(["Município", "Municipio"]),
+          start_date: getCol(["Data Início", "Data Inicio", "Fecha Inicio", "Start Date"]),
+          end_date: getCol(["Data Fim", "Fecha Fin", "End Date"]),
+          time_of_day: getCol(["Altura do Dia", "Periodo", "Horário"]).split(",").map(s => s.trim()).filter(Boolean),
+          schedule_details: getCol(["Horário", "Horario", "Schedule"]),
+          audience: getCol(["Companhia", "Audiencia", "Audience"]).split(",").map(s => s.trim()).filter(Boolean),
+          price: getCol(["Preço", "Precio", "Price"]),
+          source_name: getCol(["Fonte", "Fuente", "Source"]),
+          url: getCol(["URL", "Url", "Link", "Enlace", "Website"])
         });
       }
       return data;
     }
 
+    /* FUNCAO BLINDADA PARA ABERTURA DE LINKS EM TELEMOVEIS / WHATSAPP / DESKTOP */
+    function openExternalUrl(rawUrl) {
+      if (!rawUrl) return;
+      let target = rawUrl.trim();
+      if (!/^https?:\/\//i.test(target)) {
+        target = 'https://' + target;
+      }
+      const newWin = window.open(target, '_blank', 'noopener,noreferrer');
+      if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
+        window.location.href = target;
+      }
+    }
+
     async function fetchWeather() {
       try {
-        // Previsão para Gran Canaria (Las Palmas)
         const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=28.12&longitude=-15.43&daily=temperature_2m_max,weathercode&current_weather=true&timezone=Atlantic%2FCanary");
         const json = await res.json();
         
         if (json.current_weather) {
           const temp = Math.round(json.current_weather.temperature);
-          document.getElementById("hero-weather-pill").textContent = `☀️ Gran Canaria: ${temp}°C | Tenerife: ${temp + 1}°C`;
+          document.getElementById("weather-chip").textContent = `☀️ Gran Canaria: ${temp}°C | Tenerife: ${temp + 1}°C`;
         }
 
         if (json.daily && json.daily.time) {
@@ -687,7 +728,7 @@
           });
         }
       } catch (e) {
-        console.log("Weather fetch fallback");
+        document.getElementById("weather-chip").textContent = "☀️ Gran Canaria: 24°C | Tenerife: 25°C";
       }
       generateDayStrip();
     }
@@ -698,12 +739,12 @@
         const csvText = await response.text();
         const csvMatrix = parseCSV(csvText);
         EVENTS_DATA = mapSheetData(csvMatrix);
-        document.getElementById("sync-status").textContent = "Sincronizado";
+        document.getElementById("sync-status").textContent = "Base de dados ligada";
         generateDayStrip();
         renderEvents();
       } catch (error) {
-        document.getElementById("results-counter").textContent = "Error al conectar con Google Sheets.";
-        document.getElementById("sync-status").textContent = "Sin conexión";
+        document.getElementById("results-counter").textContent = "Erro ao ligar ao Google Sheets.";
+        document.getElementById("sync-status").textContent = "Sem ligação";
       }
     }
 
@@ -711,8 +752,8 @@
       const strip = document.getElementById("calendar-strip");
       const today = new Date();
       const days = [];
-      const esDays = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
-      const esMonths = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+      const ptDays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+      const ptMonths = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 
       for (let i = 0; i < 14; i++) {
         const d = new Date(today);
@@ -722,9 +763,9 @@
         
         days.push({
           date: isoDate,
-          label: esDays[d.getDay()],
-          num: `${d.getDate()} ${esMonths[d.getMonth()]}`,
-          weather: `${weatherInfo.icon} ${weatherInfo.temp}°`
+          label: ptDays[d.getDay()],
+          num: `${d.getDate()} ${ptMonths[d.getMonth()]}`,
+          temp: `${weatherInfo.icon} ${weatherInfo.temp}°`
         });
       }
 
@@ -734,7 +775,7 @@
           <div class="day-chip ${isActive ? "active" : ""}" data-day="${day.date}">
             <span class="d-name">${day.label}</span>
             <span class="d-num">${day.num}</span>
-            <span class="d-weather">${day.weather}</span>
+            <span class="d-temp">${day.temp}</span>
           </div>
         `;
       }).join("");
@@ -752,13 +793,13 @@
 
     function isFree(priceStr) {
       const p = (priceStr || "").toLowerCase();
-      return p.includes("gratis") || p.includes("gratuito") || p.includes("libre") || p === "0" || p === "0 eur" || p === "0€";
+      return p.includes("gratis") || p.includes("gratuito") || p.includes("livre") || p === "0" || p === "0 eur" || p === "0€";
     }
 
     function classifyOutdoorIndoor(ev) {
       const text = `${ev.title} ${ev.description} ${ev.venue}`.toLowerCase();
-      const outdoorKeywords = ["playa", "surf", "aire libre", "senderismo", "parque", "volcan", "caminata", "ruta", "jardin", "plaza", "terraza", "astronomico", "barco", "costa", "exterior", "dunas"];
-      const indoorKeywords = ["museo", "teatro", "auditorio", "cine", "sala", "interior", "exposicion", "concierto", "taller", "palacio", "biblioteca", "galeria"];
+      const outdoorKeywords = ["playa", "praia", "surf", "aire libre", "ar livre", "senderismo", "caminhada", "parque", "volcan", "vulcão", "ruta", "jardim", "plaza", "terraza", "esplanada", "mar", "oceano", "costa", "dunas"];
+      const indoorKeywords = ["museo", "museu", "teatro", "auditorio", "auditório", "cine", "cinema", "sala", "interior", "exposicion", "exposição", "concerto", "concierto", "palacio", "palácio", "biblioteca"];
       
       const isOutdoor = outdoorKeywords.some(kw => text.includes(kw));
       const isIndoor = indoorKeywords.some(kw => text.includes(kw));
@@ -780,9 +821,9 @@
         if (state.price === "Gratuito" && !isFree(ev.price)) return false;
 
         if (state.weather !== "Todos") {
-          const evEnvironment = classifyOutdoorIndoor(ev);
-          if (state.weather === "Sol" && evEnvironment === "Lluvia") return false;
-          if (state.weather === "Lluvia" && evEnvironment === "Sol") return false;
+          const evEnv = classifyOutdoorIndoor(ev);
+          if (state.weather === "Sol" && evEnv === "Lluvia") return false;
+          if (state.weather === "Lluvia" && evEnv === "Sol") return false;
         }
         
         if (state.exactDate) {
@@ -796,13 +837,13 @@
         return true;
       });
 
-      counter.textContent = `${filtered.length} actividad(es) encontrada(s)`;
+      counter.textContent = `${filtered.length} atividade(s) encontrada(s)`;
 
       if (filtered.length === 0) {
         grid.innerHTML = `
           <div class="empty-state">
-            <h3>No se encontraron actividades</h3>
-            <p>Intenta cambiar los filtros o seleccionar otro día.</p>
+            <h3>Nenhuma atividade encontrada</h3>
+            <p>Tenta mudar os filtros ou selecionar outro dia no calendário.</p>
           </div>
         `;
         return;
@@ -811,42 +852,43 @@
       grid.innerHTML = filtered.map(ev => {
         const dateLabel = ev.start_date === ev.end_date ? ev.start_date : `${ev.start_date} a ${ev.end_date}`;
         const isFreePrice = isFree(ev.price);
+        const cleanUrl = (ev.url || "").replace(/'/g, "\'");
 
         const audienceBadges = ev.audience.map(a => {
           let c = "erasmus";
           if (a.includes("Namorado")) c = "namorado";
           if (a.includes("Familia")) c = "familia";
-          return `<span class="badge-item ${c}">${a}</span>`;
+          return `<span class="badge-pill ${c}">${a}</span>`;
         }).join("");
 
-        const timeBadges = ev.time_of_day.map(t => `<span class="badge-item schedule">${t}</span>`).join("");
+        const timeBadges = ev.time_of_day.map(t => `<span class="badge-pill time">${t}</span>`).join("");
 
         return `
           <article class="event-card">
             <div>
-              <div class="card-head">
-                <span class="tag-island">${ev.zone}</span>
-                <span class="tag-cost ${isFreePrice ? 'free' : ''}">${ev.price || 'N/A'}</span>
+              <div class="card-topbar">
+                <span class="island-tag">${ev.zone}</span>
+                <span class="cost-tag ${isFreePrice ? 'free' : ''}">${ev.price || 'N/A'}</span>
               </div>
               <h2 class="event-title">${ev.title}</h2>
               <p class="event-desc">${ev.description}</p>
             </div>
 
             <div>
-              <div class="details-box">
-                <div><strong>Lugar:</strong> ${ev.venue} (${ev.municipality})</div>
-                <div><strong>Fecha:</strong> ${dateLabel}</div>
-                <div><strong>Horario:</strong> ${ev.schedule_details}</div>
+              <div class="card-info-box">
+                <div><strong>Local:</strong> ${ev.venue} (${ev.municipality})</div>
+                <div><strong>Data:</strong> ${dateLabel}</div>
+                <div><strong>Horário:</strong> ${ev.schedule_details}</div>
               </div>
 
-              <div class="badge-row">
+              <div class="badges-flex">
                 ${audienceBadges}
                 ${timeBadges}
               </div>
 
-              <div class="card-footer">
-                <span>Vía: ${ev.source_name}</span>
-                ${ev.url ? `<a class="link-official" href="\${ev.url}" target="_blank" rel="noopener noreferrer">Ver Oficial &rarr;</a>` : ''}
+              <div class="card-bottom">
+                <span>Fonte: ${ev.source_name}</span>
+                ${ev.url ? `<button type="button" class="btn-official-touch" onclick="openExternalUrl('${cleanUrl}')">Ver Oficial &rarr;</button>` : ''}
               </div>
             </div>
           </article>
@@ -854,7 +896,7 @@
       }).join("");
     }
 
-    // LISTENER PARA COMPANHIA
+    // AUDIENCE LISTENER
     document.querySelectorAll("#audience-pills .pill").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll("#audience-pills .pill").forEach(b => b.classList.remove("active"));
@@ -864,7 +906,7 @@
       });
     });
 
-    // LISTENER PARA CLIMA
+    // WEATHER LISTENER
     document.querySelectorAll("#weather-pills .pill").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll("#weather-pills .pill").forEach(b => b.classList.remove("active"));
@@ -874,7 +916,7 @@
       });
     });
 
-    // LISTENER PARA HORARIO E CUSTO
+    // TIME & PRICE LISTENER
     document.querySelectorAll("#secondary-pills .pill").forEach(btn => {
       btn.addEventListener("click", () => {
         const type = btn.getAttribute("data-type");
@@ -904,7 +946,7 @@
       renderEvents();
     });
 
-    // INICIALIZAÇÃO
+    // INICIALIZACAO
     fetchWeather();
     loadDataFromSheets();
   </script>
