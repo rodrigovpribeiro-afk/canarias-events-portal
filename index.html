@@ -447,7 +447,8 @@
       gap: 8px;
     }
 
-    .btn-official-touch {
+    /* BOTAO DE LINK NATIVO (SEM BLOQUEIO POR JAVASCRIPT) */
+    a.btn-official-touch {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -461,12 +462,15 @@
       border-radius: 10px;
       cursor: pointer;
       text-decoration: none;
-      -webkit-appearance: none;
       touch-action: manipulation;
       transition: background-color 0.15s ease, transform 0.1s ease;
     }
 
-    .btn-official-touch:active {
+    a.btn-official-touch:hover {
+      background-color: var(--ocean-deep);
+    }
+
+    a.btn-official-touch:active {
       transform: scale(0.96);
       background-color: var(--ocean-deep);
     }
@@ -651,7 +655,7 @@
 
     function mapMatrixData(matrix) {
       if (!matrix || matrix.length < 2) return [];
-      const headers = matrix[0].map(h => (h || '').toString().trim().toLowerCase().replace(/^["']|["']$/g, ''));
+      const headers = matrix[0].map(h => (h || '').toString().trim().toLowerCase().replace(/^["']|["']\$/g, ''));
       const data = [];
 
       for (let i = 1; i < matrix.length; i++) {
@@ -691,19 +695,15 @@
       return data;
     }
 
-    function openExternalUrl(rawUrl) {
-      if (!rawUrl) return;
-      let target = rawUrl.trim();
-      if (!/^https?:\/\//i.test(target)) {
-        target = 'https://' + target;
+    function formatUrl(rawUrl) {
+      if (!rawUrl) return '';
+      let url = rawUrl.trim();
+      if (!/^https?:\/\//i.test(url)) {
+        url = 'https://' + url;
       }
-      const newWin = window.open(target, '_blank', 'noopener,noreferrer');
-      if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
-        window.location.href = target;
-      }
+      return url;
     }
 
-    /* CARREGAMENTO ROBUSTO SEM PROBLEMAS DE CORS VIA GOOGLE JSONP + FALLBACKS */
     function loadDataFromSheets() {
       const statusEl = document.getElementById("sync-status");
       const counterEl = document.getElementById("results-counter");
@@ -922,7 +922,7 @@
         
         const timeBadges = ev.time_of_day.map(t => `<span class="badge-time">${t}</span>`).join("");
         const isFreePrice = isFree(ev.price);
-        const cleanUrl = (ev.url || "").replace(/'/g, "\\'");
+        const finalUrl = formatUrl(ev.url);
 
         return `
           <article class="event-card">
@@ -949,7 +949,7 @@
 
               <div class="card-footer" style="margin-top: 12px;">
                 <span>Fonte: ${ev.source_name}</span>
-                ${ev.url ? `<button type="button" class="btn-official-touch" onclick="openExternalUrl('\${cleanUrl}')">Ver Oficial &rarr;</button>` : ''}
+                ${finalUrl ? `<a class="btn-official-touch" href="\${finalUrl}" target="_blank" rel="noopener noreferrer">Ver Oficial &rarr;</a>` : ''}
               </div>
             </div>
           </article>
